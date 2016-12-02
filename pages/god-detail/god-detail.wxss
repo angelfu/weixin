@@ -1,0 +1,67 @@
+.god-detail {
+  background: #fff;
+}
+.god-detail .avatar {
+  padding: 20rpx 30rpx;
+}
+.god-detail .avatar .photo {
+  float: left;
+}
+.god-detail .avatar .photo image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.god-detail .avatar .info {
+  margin-left: 120rpx;
+}
+.cat-photo image {
+  width: 750rpx;
+  height: 490rpx;
+}
+.cat-info {
+  padding-top: 30rpx;
+}
+.cat-info .price{
+  font-size: 36rpx;
+  text-align: center;
+  color: #FF6262;
+}
+.cat-info .other-info {
+  padding: 30rpx 0;
+  text-align: center;
+  color:#9B9B9B;
+}
+.cat-sign {
+  margin: 0 30rpx;
+  padding: 30rpx;
+  border-top: 1px solid #e5e5e5;
+  color:#4a4a4a;
+  font-size: 26rpx;
+}
+.comment-blk {
+  background: #fff;
+  margin-top: 30rpx;
+  padding: 0 30rpx;
+}
+.comment-blk .comment-info {
+  height: 72rpx;
+  line-height: 72rpx;
+}
+.comment-blk .comment-list .item {
+  border-top: 1px solid #e5e5e5;
+  padding: 20rpx;
+}
+.comment-blk .comment-list .item .avatar {
+  float: left;
+}
+.comment-blk .comment-list .item .avatar image {
+  width: 64rpx;
+  height: 64rpx;
+}
+.comment-blk .comment-list .item .info {
+  margin-left: 100rpx;
+}
+.comment-blk .comment-list .item .info .info-bd {
+  padding: 16rpx 0 14rpx 0;
+  font-size: 28rpx;
+}

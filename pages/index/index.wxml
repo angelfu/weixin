@@ -1,0 +1,31 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="god-list">
+    <block wx:for="{{godList}}" wx:key="{{godList.id}}">
+      <view class="god-list-item">
+        <navigator url="../god-detail/god-detail?id=12313" redirect="false" hover-class="navigator-hover">
+          <view class="avatar">
+            <image src="{{item.avatar + '?imageView2/1/w/375/h/230'}}" mode="scaleToFill" binderror="" bindload=""></image>
+          </view>
+          <view class="info">
+            <view class="info-flex info-hd">
+              <text>{{item.nickname}}</text>
+              <text>{{item.price}}元／{{item.unit}}</text>
+            </view>
+            <view class="info-flex info-bd">
+              <view class="tag-list">
+                <text class="tag gender-tag">{{item.gender}}</text>
+                <text class="tag cat-tag">{{item.rate}}</text>
+              </view>
+              <text>接单{{item.total_unit_count + item.unit}}</text>
+            </view>
+            <view class="info-flex info-ft">
+              <text>{{item.comment_rate}}</text>
+              <text>{{item.distance}}km | </text>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,25 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/god-detail/god-detail",
+    "pages/order/order",
+    "pages/pay/pay",
+    "pages/order-list/order-list",
+    "pages/order-detail/order-detail",
+    "pages/help/help",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#00B9EF",
+    "navigationBarTitleText": "超级鱼泡泡",
+    "navigationBarTextStyle":"#fff"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

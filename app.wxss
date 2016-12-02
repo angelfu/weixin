@@ -1,0 +1,52 @@
+/**app.wxss**/
+.container {
+  font-size: 22rpx;
+  background: #f2f2f2;
+  color:#4a4a4a;
+}
+image {
+  vertical-align: middle;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex.flex-jcsb {
+  justify-content: space-between;
+}
+.flex.flex-jcsa {
+  justify-content: space-around;
+}
+.flex.flex-fdc {
+  flex-direction: column;
+}
+.footer {
+  padding-bottom: 90rpx;
+}
+.footer .view-fixed {
+  position: fixed;
+  width: 100%;
+  bottom:0;
+}
+.btn {
+  background: #00B9EF;
+  color: #fff;
+  border-radius: 0;
+}
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.big {
+  font-size: 60rpx;
+}
+.text-label {
+  font-size: 28rpx;
+  color: #9b9b9b;
+}
+.text-ligth {
+  color: #9b9b9b;
+}
