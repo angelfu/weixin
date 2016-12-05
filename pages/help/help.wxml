@@ -1,6 +1,39 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="god-detail">
-    
+  <view class="help-container">
+    <view class="detail-preview">
+      <text class="f-blue">鱼泡泡是一款移动互联网社交应用,玩家可以在这里寻找心仪的大神，线上申请约玩后至线下开展各种社交活动，与美女大神线下一起玩游戏，吃饭，看电影，逛街玩你想玩的，在真实生活中享受虚拟网络带来的乐趣。</text>
+    </view>
+
+    <view class="blk">
+      <view class="blk-hd">
+        <text class="f-blue">如何下单</text>
+      </view>
+      <view>
+        <text class="blk-bd">浏览大神列表，选择心仪的大神，点击查看该大神主页，点击下方【下单】按钮，选择品类，时间，地点下单支付即可。注：在鱼泡泡微信小程序约玩下单，所有大神有单必接。</text>
+      </view>
+      <view class="blk-footer">
+        <text class="f-blue">注：在鱼泡泡微信小程序约玩下单，所有大神有单必接。</text>
+      </view>
+    </view>
+
+    <view class="blk">
+      <view class="blk-hd">
+        <text class="f-blue">如何取消约单？</text>
+      </view>
+      <view class="blk-bd">
+        <text>1.	在订单时间开始之前，您可以在【订单列表】选择该订单并点击下方【取消订单】
+        2.	客服协助取消订单
+        订单开始时间后，出现任何意外情况，请拨打鱼泡泡客服热线<text class="f-blue">400-820-0525</text>反馈，客服会协助处理。
+        </text>
+      </view>
+      <view class="blk-footer">
+        <text class="f-blue">取消订单后，该订单产生的费用将自动退回钱包账户。</text>
+      </view>
+    </view>
+
+    <view class="help-container-footer">
+      <text>取消订单后，该订单产生的费用将自动退回钱包账户。</text>
+    </view>
   </view>
 </view>

@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class="container">
+  <navigator url="../help/help">帮助文档</navigator>
   <view class="god-list">
     <block wx:for="{{godList}}" wx:key="{{godList.id}}">
       <view class="god-list-item">
