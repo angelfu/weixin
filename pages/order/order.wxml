@@ -1,6 +1,88 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="god-detail">
-    
+  <view class="order">
+    <view class="order-god-info blk">
+      <view class="avatar">
+        <view class="photo"><image src="https://yppphoto.yupaopao.cn/upload/88636f8e-28e6-44d9-bed4-1776c26e646f.jpg?imageView2/1/w/150/h/150"></image></view>
+        <view class="name"><text>1231</text></view>
+      </view>
+    </view>
+    <view class="order-item-info blk">
+      <view class="item icon-arrow">
+        <picker bindchange="bindPickerChange" value="{{catIndex}}" range="{{catArr}}">
+          <view class="flex flex-jcsb">
+            <view class="label"><text>品类</text></view>
+            <view class="info"><text class="text-link">{{catArr[catIndex]}}</text></view>
+          </view>
+        </picker>
+      </view>
+      <view class="item icon-arrow">
+        <picker bindchange="bindTimeChange" mode="time" value="{{time}}" start="{{time}}" end="24:00">
+          <view class="flex flex-jcsb">
+            <view class="label"><text>时间</text></view>
+            <view class="info"><text class="text-link">{{time}}</text></view>
+          </view>
+        </picker>
+      </view>
+      <view class="item icon-arrow">
+        <picker bindchange="bindNumChange" value="{{numIndex}}" range="{{numArr}}">
+          <view class="flex flex-jcsb">
+            <view class="label"><text>数量</text></view>
+            <view class="info"><text class="text-link">{{numArr[numIndex]}}</text></view>
+          </view>
+        </picker>
+      </view>
+      <view class="item icon-arrow">
+        <view class="flex flex-jcsb" bindtap="showLocalSearch">
+          <view class="label"><text>地点</text></view>
+          <view class="info"><text class="{{curLocal.name && text-link}}">{{curLocal.name || '请选择地址'}}</text></view>
+        </view>
+      </view>
+      <view class="item">
+        <view class="flex flex-jcsb">
+          <view class="label"><text>手机号</text></view>
+          <view class="info"><input bindchange="bindMobileChange" placeholder="请输入手机号" maxlength="11" value="{{mobile}}"/></view>
+        </view>
+      </view>
+    </view>
+    <view class="order-item-info blk">
+      <view class="item flex flex-jcsb">
+        <view class="label"><text>费用</text></view>
+        <view class="info"><text>{{price}}元＊{{numArr[numIndex]}}</text></view>
+      </view>
+      <view class="item flex flex-jcsb">
+        <view class="label"><text>合计</text></view>
+        <view class="info"><text>{{countMoney}}元</text></view>
+      </view>
+    </view>
+    <view class="order-mark blk">
+      <textarea placeholder="简单说说你的要求吧(最多50个字)" maxlength="50"/>
+    </view>
+  </view>
+  <view class="local-search-blk" hidden="{{searchLocalHide}}">
+    <view class="local-search flex flex-jcsb">
+      <view class="search-input">
+        <icon type="search" size="12"/>
+        <input placeholder="请输入" value="{{localSearchText}}" />
+      </view>
+      <view class="quit">
+        <text class="text-link" bindtap="hideLocalSearch">取消</text>
+      </view>
+    </view>
+    <view class="local-list">
+      <block wx:for="{{localList}}" wx:key="item.id">
+        <view class="item" data-item="{{item.id}},{{item.name}}" bindtap="chooseLocal">
+          <view class="info">
+            <view class="name"><text>{{item.name}}</text></view>
+            <view class="address"><text>{{item.address}}</text></view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="footer">
+    <view class="view-fixed">
+      <button class="btn" bindtap="submitOrder">提交订单</button>
+    </view>
   </view>
 </view>

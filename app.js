@@ -40,12 +40,32 @@ App({
       header: {
         'content-type': 'application/json'
       },
-      success: function(res) {
-        typeof cb === 'function' && cb(res.data)
+      success (res) {
+        if (res.data.code === '200') {
+          typeof cb === 'function' && cb(res.data.result)
+        }else {
+          wx.showToast({
+            title: '网络错误 请重试',
+            icon: 'loading',
+            duration: 2000
+          })
+        }
+      },
+      fail (res) {
+        wx.showModal({
+          title: '错误',
+          content: '网络错误 请重试',
+          success: function(res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+            }
+          }
+        })
       }
     })
   },
   globalData: {
+    localSession: null,
     isReady: false,
     userInfo: null,
     code: null,

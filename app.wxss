@@ -4,7 +4,7 @@
   background: #f2f2f2;
   color:#4a4a4a;
 }
-image {
+image,text {
   vertical-align: middle;
 }
 .flex {
@@ -13,6 +13,7 @@ image {
 }
 .flex.flex-jcsb {
   justify-content: space-between;
+  align-items:center;
 }
 .flex.flex-jcsa {
   justify-content: space-around;
@@ -21,7 +22,7 @@ image {
   flex-direction: column;
 }
 .footer {
-  padding-bottom: 90rpx;
+  padding-bottom: 190rpx;
 }
 .footer .view-fixed {
   position: fixed;
@@ -29,7 +30,7 @@ image {
   bottom:0;
 }
 .btn {
-  background: #00B9EF;
+  background: #1D9AFF;
   color: #fff;
   border-radius: 0;
 }
@@ -50,3 +51,13 @@ image {
 .text-ligth {
   color: #9b9b9b;
 }
+.text-link {
+  color: #1D9AFF;
+}
+.blk {margin-top: 20rpx;background: #fff;}
+
+.icon {width: 24rpx;height: 24rpx;vertical-align: middle;margin: -2rpx 5rpx 0 5rpx;}
+.tag-list .tag {display: inline-block;padding: 0 10rpx;height: 24rpx;line-height: 24rpx;color:#fff;border-radius:2px;}
+.tag-list .tag image {width: 20rpx;height: 20rpx;margin-right: 5rpx;}
+.tag-list .tag.tag-gender {background: #FFC4D0;}
+.tag-list .tag.tag-gender.tag-sex1 {background: #1D9AFF;}

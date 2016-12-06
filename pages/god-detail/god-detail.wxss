@@ -14,6 +14,12 @@
 .god-detail .avatar .info {
   margin-left: 120rpx;
 }
+.god-detail .avatar .info .nickname {
+  font-size: 32rpx;
+}
+.god-detail .avatar .info .tag-list {
+  margin-top: 20rpx;
+}
 .cat-photo image {
   width: 750rpx;
   height: 490rpx;
@@ -34,9 +40,10 @@
 .cat-sign {
   margin: 0 30rpx;
   padding: 30rpx;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1rpx solid #e5e5e5;
   color:#4a4a4a;
   font-size: 26rpx;
+  line-height: 1.5;
 }
 .comment-blk {
   background: #fff;
@@ -48,7 +55,7 @@
   line-height: 72rpx;
 }
 .comment-blk .comment-list .item {
-  border-top: 1px solid #e5e5e5;
+  border-top: 1rpx solid #e5e5e5;
   padding: 20rpx;
 }
 .comment-blk .comment-list .item .avatar {

@@ -7,12 +7,12 @@ Page({
     godList: []
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad () {
     console.log('onLoad')
     var self = this,
       url = 'https://wxtest.yupaopao.cn/godlist/',
@@ -25,14 +25,13 @@ Page({
       app.getData(url, { userInfo }, data => {
         console.log(data)
         //更新数据
-        if(data.code === '200') {
-          self.setData({
-            godList: data.result
-          })
-        } else {
-          alert(data.msg)
-        }
+        self.setData({
+          godList: data
+        })
       })
+    })
+    wx.navigateTo({
+      url: '../order/order'
     })
   },
   localToDetail (event) {

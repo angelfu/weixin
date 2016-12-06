@@ -3,13 +3,13 @@
   <view class="god-detail">
     <view class="avatar clearfix">
       <view class="photo">
-        <image src="https://yppphoto.yupaopao.cn/upload/88636f8e-28e6-44d9-bed4-1776c26e646f.jpg?imageView2/1/w/50/h/50" mode="scaleToFill" binderror="" bindload=""></image>
+        <image src="{{godDetail.avatar + '?imageView2/1/w/50/h/50'}}" mode="scaleToFill" binderror="" bindload=""></image>
       </view>
       <view class="info">
-        <text class="name">wocao</text>
+        <text class="nickname">{{godDetail.nickname}}</text>
         <view class="tag-list">
-          <text class="tag gender-tag"></text>
-          <text class="tag auth-tag">认证</text>
+          <view class="tag gender-tag"><image src="{{godDetail.gender ? '../../images/icon-sex-1.png' : '../../images/icon-sex-0.png'}}"><text>{{age}}</text></image></view>
+          <view class="tag auth-tag" wx:if="{{godDetail.is_auth}}"><image src="../../images/icon-auth.png"></image>认证</view>
         </view>
       </view>
     </view>
@@ -17,44 +17,56 @@
       <image src="https://yppphoto.yupaopao.cn/upload/88636f8e-28e6-44d9-bed4-1776c26e646f.jpg?imageView2/1/w/375/h/245"></image>
     </view>
     <view class="cat-info">
-      <view class="price"><text class="big">199</text>元/小时</view>
+      <view class="price"><text class="big">{{godDetail.price}}</text>元/小时</view>
       <view class="other-info flex flex-jcsa">
-        <text class="local-icon">成都 | 4分钟前</text>
-        <text class="order-icon">接单234小时</text>
+        <view class="local">
+          <image src="../../images/icon-local.png" class="icon"></image>
+          <text>{{godDetail.city_name}} | 4分钟前</text>
+        </view>
+        <view class="ordertime">
+          <image src="../../images/icon-ordertime.png" class="icon"></image>
+          <text class="order-icon">接单{{godDetail.total_unit_count}}小时</text>
+        </view>
       </view>
     </view>
     <view class="cat-sign">
-      <text>实力中单，闭眼带你飞(不是瞎子)，别说话，直接约单，闭眼带你飞(不是瞎子)，别说话，直接约！</text>
+      <text>{{godDetail.sign}}</text>
     </view>
   </view>
   <view class="comment-blk">
     <view class="comment-info flex flex-jcsb ">
-      <text class="text-label">全部评论 (5次)</text>
-      <text>4.8</text>
+      <view class="text-label"><text>全部评论 ({{commentList.length}}次)</text></view>
+      <view class="rate-star"><text>4.8</text><image class="icon" src="../../images/icon-star.png"></image></view>
     </view>
     <view class="comment-list">
-      <view class="item clearfix">
-        <view class="avatar">
-          <image src="https://yppphoto.yupaopao.cn/upload/88636f8e-28e6-44d9-bed4-1776c26e646f.jpg?imageView2/1/w/32/h/32"></image>
+      <block wx:for="{{commentList}}">
+        <view class="item clearfix">
+          <view class="avatar">
+            <image src="{{item.avatar + '?imageView2/1/w/32/h/32'}}"></image>
+          </view>
+          <view class="info">
+            <view class="info-hd flex flex-jcsb">
+              <view class="text-label"><text>{{item.nickname}}</text></view>
+              <view class="star-blk">
+                <image class="icon" wx:for="{{5}}" wx:key="{{starItem}}" wx:for-item="starItem" src="{{starItem < item.score ? '../../images/icon-star.png' : '../../images/icon-star-dis.png'}}"></image>
+              </view>
+            </view>
+            <view class="info-bd">
+              <text>{{item.content}}</text>
+            </view>
+            <view class="info-ft">
+              <text class="text-ligth">{{item.create_time}}</text>
+            </view>
+          </view>
         </view>
-        <view class="info">
-          <view class="info-hd flex flex-jcsb">
-            <text class="text-label">那么</text>
-            <text>星星</text>
-          </view>
-          <view class="info-bd">
-            <text>技非常好，有一种王者级玩家的感觉</text>
-          </view>
-          <view class="info-ft">
-            <text class="text-ligth">08-08 08:08</text>
-          </view>
-        </view>
-      </view>
+      </block>
     </view>
   </view>
   <view class="footer">
     <view class="view-fixed">
-      <button class="btn">下单</button>
+      <navigator url="{{'../order/order?id=' + godDetail.id}}" redirect="false" hover-class="navigator-hover">
+        <button class="btn">下单</button>
+      </navigator>
     </view>
   </view>
 </view>

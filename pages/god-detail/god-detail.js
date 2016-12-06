@@ -3,19 +3,20 @@
 var app = getApp()
 Page({
   data: {
-    godDetail: {}
+    godDetail: {},
+    commentList: {}
   },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  onLoad: function (option) {
+  onLoad (option) {
     console.log(option)
     console.log('onLoad')
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/godlist/',
+      url = 'https://wxtest.yupaopao.cn/goddetail/',
       userInfo = {}
 
     app.infoReady(() => {
@@ -25,9 +26,9 @@ Page({
       userInfo.longitude = app.globalData.local.longitude
       app.getData(url, { userInfo }, data => {
         console.log(data)
-        //更新数据
         self.setData({
-          godDetail: data
+          godDetail: data.god_detail,
+          commentList: data.rate_list
         })
       })
     })

@@ -1,5 +1,6 @@
 .god-list {padding: 10rpx 10rpx 0 10rpx;}
 .god-list-item {position: relative;margin-bottom: 10rpx;}
 .god-list-item .avatar image {width: 730rpx;height:460rpx;}
-.god-list-item .info {color:#fff;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.3));position: absolute;width: 100%;bottom:0;padding: 40rpx 20rpx 20rpx 20rpx;box-sizing: border-box;}
-.info-flex {display: flex;justify-content: space-between;}
+.god-list-item .info {color:#fff;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.35));position: absolute;width: 100%;bottom:0;padding: 60rpx 20rpx 20rpx 20rpx;box-sizing: border-box;}
+.god-list-item .info .info-hd {color:#fff;font-size: 26rpx;}
+.info-flex {display: flex;justify-content: space-between;font-size: 20rpx;color:#e5e5e5;padding: 5rpx 0;}
