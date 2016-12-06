@@ -1,0 +1,23 @@
+.help-container {
+    padding: 43rpx 35rpx;
+    font-size: 28rpx;
+    line-height: 60rpx;
+}
+
+.f-blue {
+    color: #1D9AFF;
+}
+
+.help-container .blk-hd {
+    margin: 15rpx 0;
+}
+
+.help-container .blk-footer {
+    font-size: 24rpx;
+}
+
+.help-container-footer {
+    margin-top: 60rpx;
+    text-align: center;
+    font-size: 22rpx;
+}
