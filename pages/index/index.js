@@ -4,7 +4,8 @@ var app = getApp()
 Page({
   data: {
     userInfo: {},
-    godList: []
+    godList: [],
+    hasOrder: true
   },
   //事件处理函数
   bindViewTap () {
@@ -30,9 +31,9 @@ Page({
         })
       })
     })
-    wx.navigateTo({
-      url: '../order/order'
-    })
+    // wx.navigateTo({
+    //   url: '../order-detail/order-detail'
+    // })
   },
   localToDetail (event) {
 

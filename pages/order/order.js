@@ -33,19 +33,6 @@ Page({
     self.setData({
       searchLocalHide: false
     })
-    var url = 'https://wxtest.yupaopao.cn/storelist/'
-    var userInfo = app.globalData.userInfo
-    userInfo.code = app.globalData.code
-    userInfo.latitude = app.globalData.local.latitude
-    userInfo.longitude = app.globalData.local.longitude
-    app.infoReady(() => {
-      app.getData(url, { userInfo }, data => {
-        console.log(data)
-        self.setData({
-          localList: data
-        })
-      })
-    })
   },
   hideLocalSearch (e) {
     var self = this
@@ -64,7 +51,6 @@ Page({
   },
   bindPickerChange (e) {
     var self = this
-    console.log(e)
     self.setData({
       catIndex: e.detail.value,
       price: self.data.order.cat_list[e.detail.value].price
@@ -90,6 +76,20 @@ Page({
       mobile: e.detail.value
     })
   },
+  searchStore (e) {
+    var self = this,
+      url = 'https://wxtest.yupaopao.cn/storelist/'
+
+    var searchText = e.detail.value
+    app.infoReady(() => {
+      app.getData(url, { searchText }, data => {
+        console.log(data)
+        self.setData({
+          localList: data
+        })
+      })
+    })
+  },
   updateMoney () {
     var self = this
 
@@ -100,15 +100,18 @@ Page({
   submitOrder () {
     var self = this,
       submitData = {
-        mobile : self.mobile
+        mobile : self.data.mobile
       }
-    app.infoReady(() => {
-      app.getData(url, { userInfo }, data => {
-        console.log(data)
-        self.setData({
-          order: data
-        })
-      })
+    // app.infoReady(() => {
+    //   app.getData(url, { userInfo }, data => {
+    //     console.log(data)
+    //     self.setData({
+    //       order: data
+    //     })
+    //   })
+    // })
+    wx.navigateTo({
+      url: '../pay/pay'
     })
   },
   onLoad () {
@@ -129,7 +132,13 @@ Page({
           curCatName: data.cat_list[self.data.catIndex].cat_name,
           price: data.cat_list[self.data.catIndex].price
         })
-        data.cat_list.forEach(item => self.data.catArr.push(item.cat_name))
+        var temp = []
+        data.cat_list.forEach(item => {
+          temp.push(item.cat_name)
+        })
+        self.setData({
+          catArr: temp
+        })
         self.updateMoney()
       })
     })

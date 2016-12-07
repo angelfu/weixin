@@ -1,6 +1,47 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="god-detail">
-    
+  <view class="pay clearfix">
+    <view class="pay-info blk clearfix">
+      <view class="avatar">
+        <view class="photo">
+          <image src="https://yppphoto.yupaopao.cn/upload/88636f8e-28e6-44d9-bed4-1776c26e646f.jpg?imageView2/1/w/150/h/150"></image>
+        </view>
+      </view>
+      <view class="info">
+        <view class="name">
+          <text>卧槽 卧槽</text>
+        </view>
+        <view class="cat">
+          <text class="label-tag">线上LOL</text>
+        </view>
+        <view class="pay-money flex flex-jcsb">
+          <view class="price">20元*1小时</view>
+          <view class="count">20元</view>
+        </view>
+      </view>
+    </view>
+    <view class="payment">
+      <view class="title">支付方式</view>
+      <view class="item">
+        <view class="flex flex-jcsb">
+          <view class="name">
+            <image src="../../images/icon-weixin.png"></image>
+            <text>微信</text>
+          </view>
+          <view class="select">
+            <image class="icon" src="../../images/icon-selected.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="pay-promise">
+      <image class="icon" src="../../images/icon-safe.png"></image>
+      <text>该服务资金安全由鱼泡泡提供全程担保</text>
+    </view>
+  </view>
+  <view class="footer">
+    <view class="view-fixed">
+      <button class="btn" bindtap="submitOrder">支付 20元</button>
+    </view>
   </view>
 </view>

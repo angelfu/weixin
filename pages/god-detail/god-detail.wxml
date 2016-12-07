@@ -8,8 +8,8 @@
       <view class="info">
         <text class="nickname">{{godDetail.nickname}}</text>
         <view class="tag-list">
-          <view class="tag gender-tag"><image src="{{godDetail.gender ? '../../images/icon-sex-1.png' : '../../images/icon-sex-0.png'}}"><text>{{age}}</text></image></view>
-          <view class="tag auth-tag" wx:if="{{godDetail.is_auth}}"><image src="../../images/icon-auth.png"></image>认证</view>
+          <view class="tag tag-gender {{godDetail.gender ? 'tag-sex1' : ''}}"><image src="{{godDetail.gender ? '../../images/icon-sex-1.png' : '../../images/icon-sex-0.png'}}"></image><text>{{'18'}}</text></view>
+          <view class="tag tag-auth" wx:if="{{godDetail.is_auth}}"><image src="../../images/icon-auth.png"></image>认证</view>
         </view>
       </view>
     </view>
@@ -34,7 +34,7 @@
     </view>
   </view>
   <view class="comment-blk">
-    <view class="comment-info flex flex-jcsb ">
+    <view class="comment-info flex flex-jcsb">
       <view class="text-label"><text>全部评论 ({{commentList.length}}次)</text></view>
       <view class="rate-star"><text>4.8</text><image class="icon" src="../../images/icon-star.png"></image></view>
     </view>
@@ -64,7 +64,7 @@
   </view>
   <view class="footer">
     <view class="view-fixed">
-      <navigator url="{{'../order/order?id=' + godDetail.id}}" redirect="false" hover-class="navigator-hover">
+      <navigator url="{{'../order/order?id=' + godDetail.id}}">
         <button class="btn">下单</button>
       </navigator>
     </view>

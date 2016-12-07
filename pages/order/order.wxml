@@ -35,7 +35,7 @@
       <view class="item icon-arrow">
         <view class="flex flex-jcsb" bindtap="showLocalSearch">
           <view class="label"><text>地点</text></view>
-          <view class="info"><text class="{{curLocal.name && text-link}}">{{curLocal.name || '请选择地址'}}</text></view>
+          <view class="info"><text class="{{curLocal.name && 'text-link'}}">{{curLocal.name || '请选择地址'}}</text></view>
         </view>
       </view>
       <view class="item">
@@ -63,7 +63,7 @@
     <view class="local-search flex flex-jcsb">
       <view class="search-input">
         <icon type="search" size="12"/>
-        <input placeholder="请输入" value="{{localSearchText}}" />
+        <input placeholder="请输入" value="{{localSearchText}}" bindblur="searchStore"/>
       </view>
       <view class="quit">
         <text class="text-link" bindtap="hideLocalSearch">取消</text>

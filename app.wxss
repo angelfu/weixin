@@ -1,10 +1,11 @@
 /**app.wxss**/
 .container {
-  font-size: 22rpx;
+  font-size: 24rpx;
   background: #f2f2f2;
   color:#4a4a4a;
+  height: 100%;
 }
-image,text {
+image,text,icon {
   vertical-align: middle;
 }
 .flex {
@@ -57,7 +58,18 @@ image,text {
 .blk {margin-top: 20rpx;background: #fff;}
 
 .icon {width: 24rpx;height: 24rpx;vertical-align: middle;margin: -2rpx 5rpx 0 5rpx;}
-.tag-list .tag {display: inline-block;padding: 0 10rpx;height: 24rpx;line-height: 24rpx;color:#fff;border-radius:2px;}
-.tag-list .tag image {width: 20rpx;height: 20rpx;margin-right: 5rpx;}
+.tag-list .tag {font-size: 22rpx;display: inline-block;padding: 0 12rpx;height: 30rpx;line-height: 30rpx;margin-right: 10rpx;color:#fff;border-radius:2px;}
+.tag-list .tag image {width: 18rpx;height: 18rpx;margin-right: 5rpx;}
 .tag-list .tag.tag-gender {background: #FFC4D0;}
 .tag-list .tag.tag-gender.tag-sex1 {background: #1D9AFF;}
+.tag-list .tag.tag-auth {background: #009BDD;}
+
+.label-tag {display: inline-block;border: 1px solid #00B9EF;color:#00B9EF;height: 30rpx;line-height: 30rpx;padding: 0 15rpx;border-radius:2px;}
+
+.order-item-info .item {font-size: 32rpx;height: 90rpx;line-height: 90rpx;padding: 0 30rpx;border-bottom: 1rpx solid #e5e5e5;}
+.order-item-info .item.icon-arrow .info{background: url(../../images/icon-arrow.png) center right no-repeat;background-size: 10rpx 20rpx;padding-right: 40rpx;}
+.order-item-info .item input {height: 50rpx;line-height: 50rpx;width: 200rpx;font-size: 24rpx;border: 1px solid #e5e5e5;border-radius:3px;padding: 5rpx 20rpx;}
+.order-god-info .avatar {text-align: center;padding: 20rpx 0;}
+.order-god-info .avatar .photo image {width: 150rpx;height: 150rpx;}
+.order-god-info .avatar .name {padding-top: 15rpx;font-size: 32rpx;}
+.order-mark {padding: 20rpx 25rpx;height: 160rpx;margin-bottom: 20rpx;}

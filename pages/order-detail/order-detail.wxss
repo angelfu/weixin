@@ -1,0 +1,2 @@
+.order-status {background: #fff;padding: 20rpx 0;font-size: 28rpx;color:#1D9AFF;text-align: center;}
+.order-status icon {margin-right: 20rpx;}
