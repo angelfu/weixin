@@ -13,18 +13,12 @@ Page({
     })
   },
   onLoad (option) {
-    console.log(option)
     console.log('onLoad')
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/goddetail/',
-      userInfo = {}
+      url = 'https://wxtest.yupaopao.cn/goddetail/'
 
     app.infoReady(() => {
-      userInfo = app.globalData.userInfo
-      userInfo.code = app.globalData.code
-      userInfo.latitude = app.globalData.local.latitude
-      userInfo.longitude = app.globalData.local.longitude
-      app.getData(url, { userInfo }, data => {
+      app.getData(url, { god_id: option.id }, data => {
         console.log(data)
         self.setData({
           godDetail: data.god_detail,

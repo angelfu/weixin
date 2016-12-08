@@ -39,7 +39,7 @@
       <view class="rate-star"><text>4.8</text><image class="icon" src="../../images/icon-star.png"></image></view>
     </view>
     <view class="comment-list">
-      <block wx:for="{{commentList}}">
+      <block wx:for="{{commentList}}" wx:key="{{item.id}}">
         <view class="item clearfix">
           <view class="avatar">
             <image src="{{item.avatar + '?imageView2/1/w/32/h/32'}}"></image>
@@ -64,7 +64,7 @@
   </view>
   <view class="footer">
     <view class="view-fixed">
-      <navigator url="{{'../order/order?id=' + godDetail.id}}">
+      <navigator url="{{'../order/order?id=' + godDetail.god_id}}">
         <button class="btn">下单</button>
       </navigator>
     </view>

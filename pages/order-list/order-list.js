@@ -14,15 +14,11 @@ Page({
   onLoad (option) {
     console.log('onLoad')
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/goddetail/',
+      url = 'https://wxtest.yupaopao.cn/orderlist/',
       userInfo = {}
 
     app.infoReady(() => {
-      userInfo = app.globalData.userInfo
-      userInfo.code = app.globalData.code
-      userInfo.latitude = app.globalData.local.latitude
-      userInfo.longitude = app.globalData.local.longitude
-      app.getData(url, { userInfo }, data => {
+      app.getData(url, {}, data => {
         console.log(data)
         self.setData({
           orderList: data

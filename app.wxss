@@ -25,6 +25,9 @@ image,text,icon {
 .footer {
   padding-bottom: 190rpx;
 }
+.footer.nopt {
+  padding-bottom: 94rpx;
+}
 .footer .view-fixed {
   position: fixed;
   width: 100%;
@@ -67,6 +70,7 @@ image,text,icon {
 .label-tag {display: inline-block;border: 1px solid #00B9EF;color:#00B9EF;height: 30rpx;line-height: 30rpx;padding: 0 15rpx;border-radius:2px;}
 
 .order-item-info .item {font-size: 32rpx;height: 90rpx;line-height: 90rpx;padding: 0 30rpx;border-bottom: 1rpx solid #e5e5e5;}
+.order-item-info .item image {width: 10rpx;height: 20rpx;margin-left: 20rpx;}
 .order-item-info .item.icon-arrow .info{background: url(../../images/icon-arrow.png) center right no-repeat;background-size: 10rpx 20rpx;padding-right: 40rpx;}
 .order-item-info .item input {height: 50rpx;line-height: 50rpx;width: 200rpx;font-size: 24rpx;border: 1px solid #e5e5e5;border-radius:3px;padding: 5rpx 20rpx;}
 .order-god-info .avatar {text-align: center;padding: 20rpx 0;}

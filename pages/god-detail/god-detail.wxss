@@ -69,6 +69,6 @@
   margin-left: 100rpx;
 }
 .comment-blk .comment-list .item .info .info-bd {
-  padding: 16rpx 0 14rpx 0;
+  padding: 10rpx 0 5rpx 0;
   font-size: 28rpx;
 }

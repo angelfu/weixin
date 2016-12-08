@@ -5,7 +5,7 @@ Page({
   data: {
     userInfo: {},
     godList: [],
-    hasOrder: true
+    hasOrder: false
   },
   //事件处理函数
   bindViewTap () {
@@ -14,7 +14,6 @@ Page({
     })
   },
   onLoad () {
-    console.log('onLoad')
     var self = this,
       url = 'https://wxtest.yupaopao.cn/godlist/',
       userInfo = {}

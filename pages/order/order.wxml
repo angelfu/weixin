@@ -8,34 +8,34 @@
       </view>
     </view>
     <view class="order-item-info blk">
-      <view class="item icon-arrow">
+      <view class="item">
         <picker bindchange="bindPickerChange" value="{{catIndex}}" range="{{catArr}}">
           <view class="flex flex-jcsb">
             <view class="label"><text>品类</text></view>
-            <view class="info"><text class="text-link">{{catArr[catIndex]}}</text></view>
+            <view class="info"><text class="text-link">{{catArr[catIndex]}}</text><image src="../../images/icon-arrow.png"></image></view>
           </view>
         </picker>
       </view>
-      <view class="item icon-arrow">
+      <view class="item">
         <picker bindchange="bindTimeChange" mode="time" value="{{time}}" start="{{time}}" end="24:00">
           <view class="flex flex-jcsb">
             <view class="label"><text>时间</text></view>
-            <view class="info"><text class="text-link">{{time}}</text></view>
+            <view class="info"><text class="text-link">{{time}}</text><image src="../../images/icon-arrow.png"></image></view>
           </view>
         </picker>
       </view>
-      <view class="item icon-arrow">
+      <view class="item">
         <picker bindchange="bindNumChange" value="{{numIndex}}" range="{{numArr}}">
           <view class="flex flex-jcsb">
             <view class="label"><text>数量</text></view>
-            <view class="info"><text class="text-link">{{numArr[numIndex]}}</text></view>
+            <view class="info"><text class="text-link">{{numArr[numIndex]}}</text><image src="../../images/icon-arrow.png"></image></view>
           </view>
         </picker>
       </view>
-      <view class="item icon-arrow">
+      <view class="item">
         <view class="flex flex-jcsb" bindtap="showLocalSearch">
           <view class="label"><text>地点</text></view>
-          <view class="info"><text class="{{curLocal.name && 'text-link'}}">{{curLocal.name || '请选择地址'}}</text></view>
+          <view class="info"><text class="{{curLocal.name && 'text-link'}}">{{curLocal.name || '请选择地址'}}</text><image src="../../images/icon-arrow.png"></image></view>
         </view>
       </view>
       <view class="item">
@@ -56,7 +56,7 @@
       </view>
     </view>
     <view class="order-mark blk">
-      <textarea placeholder="简单说说你的要求吧(最多50个字)" maxlength="50"/>
+      <textarea placeholder="简单说说你的要求吧(最多50个字)" maxlength="50" value="{{mark}}" bindchange="bindMarkChange"/>
     </view>
   </view>
   <view class="local-search-blk" hidden="{{searchLocalHide}}">
@@ -71,7 +71,7 @@
     </view>
     <view class="local-list">
       <block wx:for="{{localList}}" wx:key="item.id">
-        <view class="item" data-item="{{item.id}},{{item.name}}" bindtap="chooseLocal">
+        <view class="item" data-item="{{item.id}},{{item.name}},{{item.address}}" bindtap="chooseLocal">
           <view class="info">
             <view class="name"><text>{{item.name}}</text></view>
             <view class="address"><text>{{item.address}}</text></view>

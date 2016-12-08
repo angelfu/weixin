@@ -8,7 +8,8 @@ App({
     wx.setStorageSync('logs', logs)
   },
   infoReady (cb) {
-    var self = this
+    var self = this,
+      url = 'https://wxtest.yupaopao.cn/login/'
     if (self.globalData.isReady) {
       typeof cb == "function" && cb()
     } else {
@@ -25,7 +26,10 @@ App({
             success: function (res) {
               self.globalData.userInfo = res.userInfo
               self.globalData.isReady = true
-              typeof cb == "function" && cb()
+              self.getData(url, {code: self.globalData.code}, (token) => {
+                self.globalData.access_token = token.access_token
+                typeof cb == "function" && cb()
+              })
             }
           })
         }
@@ -33,6 +37,8 @@ App({
     }
   },
   getData (url, data, cb) {
+    var self = this
+    data.code ? '' : data.access_token = self.globalData.access_token
     wx.request({
       url: url,
       data: data,
@@ -43,7 +49,12 @@ App({
       success (res) {
         if (res.data.code === '200') {
           typeof cb === 'function' && cb(res.data.result)
-        }else {
+        } else if (res.data.code === '406') {
+          self.globalData.isReady = false
+          wx.redirectTo({
+            url: '../index/index'
+          })
+        } else {
           wx.showToast({
             title: '网络错误 请重试',
             icon: 'loading',
@@ -66,6 +77,7 @@ App({
   },
   globalData: {
     localSession: null,
+    access_token: null,
     isReady: false,
     userInfo: null,
     code: null,

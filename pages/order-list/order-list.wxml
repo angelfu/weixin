@@ -1,27 +1,27 @@
 <!--index.wxml-->
 <view class="container">
   <view class="order-list clearfix">
-    <block wx:for="{{orderList}}">
-      <navigator url="../order-detail/order-detail">
-        <view class="item blk">
+    <block wx:for="{{orderList}}" wx:key="item.id">
+      <navigator url="{{'../order-detail/order-detail?id=' + item.id}}">
+        <view class="item blk {{item.status === '14' && 'dis'}}">
           <view class="item-hd flex flex-jcsb">
-            <view class="order-status"><text class="text-link">接单中</text></view>
-            <view class="order-time"><text>下单时间：111111</text></view>
+            <view class="order-status"><text class="text-link">{{item.order_status_desc}}</text></view>
+            <view class="order-time"><text>下单时间：{{item.create_time}}</text></view>
           </view>
           <view class="item-bd clearfix">
             <view class="avatar">
               <view class="photo">
-                <image src="https://yppphoto.yupaopao.cn/upload/88636f8e-28e6-44d9-bed4-1776c26e646f.jpg?imageView2/1/w/100/h/100"></image>
+                <image src="{{item.avatar + '?imageView2/1/w/100/h/100'}}"></image>
               </view>
             </view>
             <view class="info">
-              <view class="time"><text>预约时间：2016.11.29 14:00-18:00</text></view>
-              <view class="cat"><text>线下LOL</text></view>
-              <view class="local"><text>网鱼网咖漕宝路店</text></view>
+              <view class="time"><text>预约时间：{{item.begin_time}}</text></view>
+              <view class="cat"><text>{{item.play_category_name}}</text></view>
+              <view class="local"><text>{{item.play_poi_name}}</text></view>
             </view>
           </view>
           <view class="item-ft">
-            <text class="cost">费用：¥123</text>
+            <text class="cost">费用：¥{{item.pay_fee}}</text>
           </view>
         </view>
       </navigator>

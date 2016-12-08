@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class="god-list">
-    <block wx:for="{{godList}}" wx:key="{{godList.id}}">
+    <block wx:for="{{godList}}" wx:key="{{item.god_id}}">
       <view class="god-list-item">
         <navigator url="{{'../god-detail/god-detail?id=' + item.god_id}}">
           <view class="avatar">
@@ -33,9 +33,9 @@
       </view>
     </block>
   </view>
-  <view class="footer" v-if="hasOrder">
+  <view class="footer nopt" wx:if="{{!hasOrder}}">
     <view class="view-fixed">
-      <navigator url="../order-list/order-list">
+      <navigator url="{{'../order-list/order-list?access_token=' + hasOrder}}">
         <button class="btn"><image class="icon" src="../../images/icon-order.png"></image><text> 订单列表</text></button>
       </navigator>
     </view>

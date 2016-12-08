@@ -4,7 +4,7 @@ var app = getApp()
 Page({
   data: {
     orderDetail: {},
-    isWait: true
+    isQuit: false
   },
   //事件处理函数
   bindViewTap () {
@@ -12,22 +12,45 @@ Page({
       url: '../logs/logs'
     })
   },
+  orderQuit (e) {
+    var self = this,
+      url = 'https://wxtest.yupaopao.cn/quitOrder/'
+    wx.showModal({
+      title: '取消订单',
+      content: '当前订单正在进行中，确认取消订单',
+      success: function(res) {
+        if (res.confirm) {
+          app.getData(url, { order_id: self.data.orderDetail.id }, data => {
+            console.log(data)
+            wx.showToast({
+              title: '取消成功',
+              icon: 'success',
+              duration: 2000
+            })
+            wx.redirectTo({
+              url: '../index/index'
+            })
+          })
+        }
+      }
+    })
+  },
   onLoad (option) {
     console.log('onLoad')
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/goddetail/',
-      userInfo = {}
+      url = 'https://wxtest.yupaopao.cn/orderdetail/'
 
     app.infoReady(() => {
-      userInfo = app.globalData.userInfo
-      userInfo.code = app.globalData.code
-      userInfo.latitude = app.globalData.local.latitude
-      userInfo.longitude = app.globalData.local.longitude
-      app.getData(url, { userInfo }, data => {
+      app.getData(url, { order_id: option.id }, data => {
         console.log(data)
         self.setData({
           orderDetail: data
         })
+        if (data.status === '14') {
+          self.setData({
+            isQuit: true
+          })
+        }
       })
     })
   }
