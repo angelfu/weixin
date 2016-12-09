@@ -22,19 +22,29 @@ App({
       wx.login({
         success: function (data) {
           self.globalData.code = data.code
+          self.getAccessToken(data.code)
           wx.getUserInfo({
             success: function (res) {
               self.globalData.userInfo = res.userInfo
               self.globalData.isReady = true
-              self.getData(url, {code: self.globalData.code}, (token) => {
-                self.globalData.access_token = token.access_token
-                typeof cb == "function" && cb()
-              })
+              typeof cb == "function" && cb()
             }
           })
         }
       })
     }
+  },
+  getAccessToken (code) {
+    var self = this,
+      url = 'https://wxtest.yupaopao.cn/login/'
+    self.globalData.access_token = wx.getStorageSync('access_token')
+    if (!self.globalData.access_token) {
+      self.getData(url, { code }, (token) => {
+        wx.setStorageSync('access_token', token.access_token)
+        self.globalData.access_token = token.access_token
+      })
+    }
+    return self.globalData.access_token
   },
   getData (url, data, cb) {
     var self = this
@@ -52,7 +62,10 @@ App({
         } else if (res.data.code === '406') {
           self.globalData.isReady = false
           wx.redirectTo({
-            url: '../index/index'
+            url: '../index/index',
+            complete () {
+              self.getAccessToken(self.globalData.code)
+            }
           })
         } else {
           wx.showToast({

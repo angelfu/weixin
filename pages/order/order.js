@@ -16,7 +16,10 @@ Page({
     localSearchText: '',
     searchLocalHide: true,
     countMoney: 0,
-    mark: ''
+    mark: '',
+    isSubmit: false,
+    isSearch: false,
+    tipText: ''
   },
   //事件处理函数
   bindViewTap () {
@@ -83,17 +86,33 @@ Page({
       mark: e.detail.value
     })
   },
+  showTip (text) {
+    var self = this
+    self.setData({
+      tipText: text
+    })
+    setTimeout(() => {
+      self.setData({
+        tipText: ''
+      })
+    }, 2000)
+  },
   searchStore (e) {
     var self = this,
       url = 'https://wxtest.yupaopao.cn/storelist/'
-
-    var searchText = e.detail.value
+    var reqData = {
+      cat_id: self.data.order.cat_list[self.data.catIndex].cat_id,
+      lat: app.globalData.local.latitude,
+      lng: app.globalData.local.longitude,
+      search_word: e.detail.value
+    }
     app.infoReady(() => {
-      app.getData(url, { searchText }, data => {
-        console.log(data)
-        self.setData({
-          localList: data
-        })
+      app.getData(url, reqData, data => {
+          console.log(data)
+          self.setData({
+            localList: data,
+            isSearch: true
+          })
       })
     })
   },
@@ -121,42 +140,48 @@ Page({
       }
     for (var i in orderInfo) {
       if (!orderInfo[i]) {
-        console.log(i + '数据不全')
-        return false
+        return self.showTip('请选择地址')
       }
     }
-    if(!/^1[3|4|5|7|8|9][0-9]\d{8}$/.test(self.data.mobile)) {
-      console.log('手机错误')
-      return false
+    if (!/^1[3|4|5|7|8|9][0-9]\d{8}$/.test(self.data.mobile)) {
+      return self.showTip('手机格式错误')
     }
     wx.setStorageSync('mobile', self.data.mobile)
     orderInfo.mark = self.data.mark
     userInfo.phone = self.data.mobile
-    app.infoReady(() => {
-      app.getData(url, { userInfo, orderInfo }, data => {
-        wx.requestPayment({
-           timeStamp: data.pay_result.timestamp,
-           nonceStr: data.pay_result.nonce_str,
-           package: data.pay_result.app_package,
-           signType: 'MD5',
-           paySign: data.pay_result.sign,
-           success (res) {
-             console.log(111 + res)
-           },
-           fail (res){
-             console.log(222 + res)
-           },
-           complete (res) {
-             console.log(333 + res)
-           }
-        })
-        console.log(data)
-        // wx.setStorageSync('pay_result', data.pay_result)
-        // wx.navigateTo({
-        //   url: '../pay/pay？play_order_id＝'+ data.play_order_id + '&user_id=' + data.user_id
-        // })
+    if (!self.data.isSubmit) {
+      self.setData({
+        isSubmit: true
       })
-    })
+      app.infoReady(() => {
+        app.getData(url, { userInfo, orderInfo }, data => {
+          wx.requestPayment({
+             timeStamp: data.pay_result.timestamp,
+             nonceStr: data.pay_result.nonce_str,
+             package: data.pay_result.app_package,
+             signType: 'MD5',
+             paySign: data.pay_result.sign,
+             success (res) {
+               console.log(111 + res)
+             },
+             fail (res){
+               console.log(222 + res)
+             },
+             complete (res) {
+               console.log(333 + res)
+               self.setData({
+                 isSubmit: false
+               })
+             }
+          })
+          console.log(data)
+          // wx.setStorageSync('pay_result', data.pay_result)
+          // wx.navigateTo({
+          //   url: '../pay/pay？play_order_id＝'+ data.play_order_id + '&user_id=' + data.user_id
+          // })
+        })
+      })
+    }
   },
   onLoad (option) {
     console.log('onLoad')

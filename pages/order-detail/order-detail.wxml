@@ -13,20 +13,16 @@
     </view>
     <view class="order-item-info blk">
       <view class="item">
-        <picker bindchange="bindPickerChange" value="{{catIndex}}" range="{{catArr}}">
-          <view class="flex flex-jcsb">
-            <view class="label"><text>品类</text></view>
-            <view class="info"><text class="text-link">{{orderDetail.play_category_name}}</text></view>
-          </view>
-        </picker>
+        <view class="flex flex-jcsb">
+          <view class="label"><text>品类</text></view>
+          <view class="info"><text class="text-link">{{orderDetail.play_category_name}}</text></view>
+        </view>
       </view>
       <view class="item">
-        <picker bindchange="bindTimeChange" mode="time" value="{{time}}" start="{{time}}" end="24:00">
-          <view class="flex flex-jcsb">
-            <view class="label"><text>时间</text></view>
-            <view class="info"><text class="text-link">今天{{orderDetail.begin_time}}  {{orderDetail.hour}}次</text></view>
-          </view>
-        </picker>
+        <view class="flex flex-jcsb">
+          <view class="label"><text>时间</text></view>
+          <view class="info"><text class="text-link">今天{{orderDetail.begin_time}}  {{orderDetail.hour}}次</text></view>
+        </view>
       </view>
       <view class="item">
         <view class="flex flex-jcsb" bindtap="showLocalSearch">
@@ -37,7 +33,7 @@
       <view class="item">
         <view class="flex flex-jcsb" bindtap="showLocalSearch">
           <view class="label"><text>手机号</text></view>
-          <view class="info"><text class="text-link"></text></view>
+          <view class="info"><text class="text-link">{{orderDetail.phone}}</text></view>
         </view>
       </view>
     </view>

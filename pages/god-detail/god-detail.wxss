@@ -10,6 +10,7 @@
 .god-detail .avatar .photo image{
   width: 100rpx;
   height: 100rpx;
+  border-radius: 6rpx;
 }
 .god-detail .avatar .info {
   margin-left: 120rpx;
@@ -53,6 +54,7 @@
 .comment-blk .comment-info {
   height: 72rpx;
   line-height: 72rpx;
+  font-size: 28rpx;
 }
 .comment-blk .comment-list .item {
   border-top: 1rpx solid #e5e5e5;
@@ -64,6 +66,7 @@
 .comment-blk .comment-list .item .avatar image {
   width: 64rpx;
   height: 64rpx;
+  border-radius: 6rpx;
 }
 .comment-blk .comment-list .item .info {
   margin-left: 100rpx;

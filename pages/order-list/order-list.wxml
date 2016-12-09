@@ -3,7 +3,7 @@
   <view class="order-list clearfix">
     <block wx:for="{{orderList}}" wx:key="item.id">
       <navigator url="{{'../order-detail/order-detail?id=' + item.id}}">
-        <view class="item blk {{item.status === '14' && 'dis'}}">
+        <view class="item blk {{item.is_gray && 'dis'}}">
           <view class="item-hd flex flex-jcsb">
             <view class="order-status"><text class="text-link">{{item.order_status_desc}}</text></view>
             <view class="order-time"><text>下单时间：{{item.create_time}}</text></view>

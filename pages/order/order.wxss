@@ -1,9 +1,10 @@
-.order-mark textarea {height: 160rpx;}
+.order-mark input {height: 160rpx;line-height: 30rpx;vertical-align: top;}
 .local-search-blk {position: fixed;width: 100%;height: 100%;overflow-y: auto;top:0;left:0;background: #f2f2f2;z-index: 10;}
 .local-search {padding: 15rpx;position: relative;}
 .local-search .search-input icon {position: absolute;z-index: 9;top:30rpx;left:35rpx;}
-.local-search .search-input input {width: 570rpx;height: 56rpx;line-height: 56rpx;border-radius: 3px;padding-left: 60rpx;background: #fff;}
+.local-search .search-input input {width: 570rpx;height: 64rpx;line-height: 64rpx;border-radius: 3px;padding-left: 60rpx;background: #fff;}
 .local-search .quit {font-size: 32rpx;padding-right: 5rpx;}
 .local-list .item {background: #fff;border-bottom: 1px solid #e5e5e5;padding: 25rpx 60rpx;}
 .local-list .item .name {font-size: 28rpx;margin-bottom: 5px;}
 .local-list .item .address {font-size: 24rpx;color:#9b9b9b;}
+.local-list .nodata {text-align: center;font-size: 30rpx;padding: 20rpx 0;}

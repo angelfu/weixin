@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container bg-white">
   <view class="help-container">
     <view class="detail-preview">
       <text class="f-blue">鱼泡泡是一款移动互联网社交应用,玩家可以在这里寻找心仪的大神，线上申请约玩后至线下开展各种社交活动，与美女大神线下一起玩游戏，吃饭，看电影，逛街玩你想玩的，在真实生活中享受虚拟网络带来的乐趣。</text>

@@ -18,10 +18,6 @@ Page({
       userInfo = {}
 
     app.infoReady(() => {
-      userInfo = app.globalData.userInfo
-      userInfo.code = app.globalData.code
-      userInfo.latitude = app.globalData.local.latitude
-      userInfo.longitude = app.globalData.local.longitude
       app.getData(url, { userInfo }, data => {
         console.log(data)
         self.setData({

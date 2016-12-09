@@ -14,7 +14,7 @@
             </view>
             <view class="info-flex info-bd">
               <view class="tag-list">
-                <view class="tag tag-gender {{item.gender ? 'tag-sex1' : ''}}"><image src="{{item.gender ? '../../images/icon-sex-1.png' : '../../images/icon-sex-0.png'}}"></image><text>{{'18'}}</text></view>
+                <view class="tag tag-gender {{item.gender ? 'tag-sex1' : ''}}"><image src="{{item.gender ? '../../images/icon-sex-1.png' : '../../images/icon-sex-0.png'}}"></image><text>{{item.age}}</text></view>
               </view>
               <view>
                 <text>接单{{item.total_unit_count}}小时</text>
@@ -33,9 +33,14 @@
       </view>
     </block>
   </view>
-  <view class="footer nopt" wx:if="{{!hasOrder}}">
+  <view class="help-tip">
+    <navigator url="../help/help">
+      <image class="icon lg" src="../../images/icon-help.png"></image>
+    </navigator>
+  </view>
+  <view class="footer nopt">
     <view class="view-fixed">
-      <navigator url="{{'../order-list/order-list?access_token=' + hasOrder}}">
+      <navigator url="../order-list/order-list">
         <button class="btn"><image class="icon" src="../../images/icon-order.png"></image><text> 订单列表</text></button>
       </navigator>
     </view>

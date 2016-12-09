@@ -46,7 +46,7 @@ Page({
         self.setData({
           orderDetail: data
         })
-        if (data.status === '14') {
+        if (data.can_cancel) {
           self.setData({
             isQuit: true
           })
