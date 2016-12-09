@@ -10,6 +10,8 @@ Page({
     numArr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
     numIndex: 0,
     time: '00:00',
+    dateArr: ['今天', '明天'],
+    dateIndex: 0,
     mobile: '',
     curLocal: {id: '', name: '', address: ''},
     localList: [],
@@ -27,16 +29,25 @@ Page({
       url: '../logs/logs'
     })
   },
-  formatTime () {
+  formatTime (model) {
     var now = new Date()
-    now.setMinutes(now.getMinutes() + 10)
-    return util.formatNumber(now.getHours()) + ':' + util.formatNumber(now.getMinutes())
+    if (model === 0) {
+      return now.getFullYear() + '-' + util.formatNumber(now.getMonth() + 1) + '-' + util.formatNumber(now.getDate())
+    } else if (model === '1') {
+      now.setDate(now.getDate() + 1)
+      return now.getFullYear() + '-' + util.formatNumber(now.getMonth() + 1) + '-' + util.formatNumber(now.getDate())
+    } else {
+      now.setMinutes(now.getMinutes() + 10)
+      return util.formatNumber(now.getHours()) + ':' + util.formatNumber(now.getMinutes())
+    }
+
   },
   showLocalSearch (e) {
     var self = this
     self.setData({
       searchLocalHide: false
     })
+    self.searchStore(e);
   },
   hideLocalSearch (e) {
     var self = this
@@ -60,6 +71,21 @@ Page({
       price: self.data.order.cat_list[e.detail.value].price
     })
     self.updateMoney()
+  },
+  bindDateChange (e) {
+    var self = this
+    if (self.data.dateArr[e.detail.value] === '今天') {
+      self.setData({
+        startTime: self.formatTime()
+      })
+    }else {
+      self.setData({
+        startTime: '00:00'
+      })
+    }
+    self.setData({
+      dateIndex: e.detail.value
+    })
   },
   bindTimeChange (e) {
     var self = this
@@ -130,7 +156,7 @@ Page({
       orderInfo = {
         cat_id : self.data.order.cat_list[self.data.catIndex].cat_id,
         god_id: self.data.order.god_detail.god_id,
-        begin_time: self.data.time,
+        begin_time: self.formatTime(self.data.dateIndex)+ ' ' + self.data.time + ':00',
         order_city: '上海',
         times: self.data.numArr[self.data.numIndex],
         play_poi_id: self.data.curLocal.id,
@@ -156,6 +182,9 @@ Page({
       })
       app.infoReady(() => {
         app.getData(url, { userInfo, orderInfo }, data => {
+          self.setData({
+            isSubmit: false
+          })
           wx.requestPayment({
              timeStamp: data.pay_result.timestamp,
              nonceStr: data.pay_result.nonce_str,
@@ -170,9 +199,7 @@ Page({
              },
              complete (res) {
                console.log(333 + res)
-               self.setData({
-                 isSubmit: false
-               })
+
              }
           })
           console.log(data)
@@ -200,19 +227,19 @@ Page({
     })
     app.infoReady(() => {
       app.getData(url, { god_id: option.id }, data => {
-        self.setData({
-          order: data,
-          time: self.formatTime(),
-          curCatName: data.cat_list[self.data.catIndex].cat_name,
-          price: data.cat_list[self.data.catIndex].price
-        })
         var temp = []
         data.cat_list.forEach(item => {
           temp.push(item.cat_name)
         })
         self.setData({
+          order: data,
+          time: self.formatTime(),
+          startTime: self.formatTime(),
+          curCatName: data.cat_list[self.data.catIndex].cat_name,
+          price: data.cat_list[self.data.catIndex].price,
           catArr: temp
         })
+
         self.updateMoney()
       })
     })

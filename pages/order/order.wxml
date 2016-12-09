@@ -17,7 +17,15 @@
         </picker>
       </view>
       <view class="item">
-        <picker bindchange="bindTimeChange" mode="time" value="{{time}}" start="{{time}}" end="24:00">
+        <picker bindchange="bindDateChange" value="{{dateIndex}}" range="{{dateArr}}">
+          <view class="flex flex-jcsb">
+            <view class="label"><text>日期</text></view>
+            <view class="info"><text class="text-link">{{dateArr[dateIndex]}}</text><image src="../../images/icon-arrow.png"></image></view>
+          </view>
+        </picker>
+      </view>
+      <view class="item">
+        <picker bindchange="bindTimeChange" mode="time" value="{{time}}" start="{{startTime}}" end="24:00">
           <view class="flex flex-jcsb">
             <view class="label"><text>时间</text></view>
             <view class="info"><text class="text-link">{{time}}</text><image src="../../images/icon-arrow.png"></image></view>
