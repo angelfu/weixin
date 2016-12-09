@@ -69,7 +69,7 @@ App({
           })
         } else {
           wx.showToast({
-            title: '网络错误 请重试',
+            title: res.data.msg,
             icon: 'loading',
             duration: 2000
           })
