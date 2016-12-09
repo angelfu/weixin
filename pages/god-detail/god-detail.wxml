@@ -21,7 +21,7 @@
       <view class="other-info flex flex-jcsa">
         <view class="local">
           <image src="../../images/icon-local.png" class="icon"></image>
-          <text>{{godDetail.city_name}} | 4分钟前</text>
+          <text>{{godDetail.city_name}} | {{godDetail.leavetime}}</text>
         </view>
         <view class="ordertime">
           <image src="../../images/icon-ordertime.png" class="icon"></image>
