@@ -13,13 +13,11 @@ Page({
     })
   },
   onLoad (option) {
-    console.log('onLoad')
     var self = this,
       url = 'https://wxtest.yupaopao.cn/goddetail/'
 
     app.infoReady(() => {
       app.getData(url, { god_id: option.id }, data => {
-        console.log(data)
         self.setData({
           godDetail: data.god_detail,
           commentList: data.rate_list

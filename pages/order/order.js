@@ -134,7 +134,6 @@ Page({
     }
     app.infoReady(() => {
       app.getData(url, reqData, data => {
-          console.log(data)
           self.setData({
             localList: data,
             isSearch: true
@@ -212,8 +211,6 @@ Page({
     }
   },
   onLoad (option) {
-    console.log('onLoad')
-
     var self = this,
       url = 'https://wxtest.yupaopao.cn/goddetail/order/'
     //调用应用实例的方法获取全局数据

@@ -12,14 +12,12 @@ Page({
     })
   },
   onLoad (option) {
-    console.log('onLoad')
     var self = this,
       url = 'https://wxtest.yupaopao.cn/orderlist/',
       userInfo = {}
 
     app.infoReady(() => {
       app.getData(url, {}, data => {
-        console.log(data)
         self.setData({
           orderList: data
         })

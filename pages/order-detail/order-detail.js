@@ -21,7 +21,6 @@ Page({
       success: function(res) {
         if (res.confirm) {
           app.getData(url, { order_id: self.data.orderDetail.id }, data => {
-            console.log(data)
             wx.showToast({
               title: '取消成功',
               icon: 'success',
@@ -36,13 +35,11 @@ Page({
     })
   },
   onLoad (option) {
-    console.log('onLoad')
     var self = this,
       url = 'https://wxtest.yupaopao.cn/orderdetail/'
 
     app.infoReady(() => {
       app.getData(url, { order_id: option.id }, data => {
-        console.log(data)
         self.setData({
           orderDetail: data
         })

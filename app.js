@@ -10,6 +10,7 @@ App({
   infoReady (cb) {
     var self = this,
       url = 'https://wxtest.yupaopao.cn/login/'
+
     if (self.globalData.isReady) {
       typeof cb == "function" && cb()
     } else {
@@ -19,32 +20,38 @@ App({
           self.globalData.local = res
         }
       })
-      wx.login({
-        success: function (data) {
-          self.globalData.code = data.code
-          self.getAccessToken(data.code)
-          wx.getUserInfo({
-            success: function (res) {
-              self.globalData.userInfo = res.userInfo
-              self.globalData.isReady = true
-              typeof cb == "function" && cb()
-            }
-          })
-        }
+
+      self.getAccessToken(() => {
+        wx.getUserInfo({
+          success: function (res) {
+            self.globalData.userInfo = res.userInfo
+            self.globalData.isReady = true
+            typeof cb == "function" && cb()
+          },
+          fail (res) {
+            self.failMsg('获取用户信息失败 请重试')
+          }
+        })
       })
     }
   },
-  getAccessToken (code) {
+  getAccessToken (cb) {
     var self = this,
       url = 'https://wxtest.yupaopao.cn/login/'
-    self.globalData.access_token = wx.getStorageSync('access_token')
-    if (!self.globalData.access_token) {
-      self.getData(url, { code }, (token) => {
-        wx.setStorageSync('access_token', token.access_token)
-        self.globalData.access_token = token.access_token
-      })
-    }
-    return self.globalData.access_token
+
+    wx.login({
+      success: function (data) {
+        self.globalData.code = data.code
+        self.getData(url, { code: data.code }, (token) => {
+          wx.setStorageSync('access_token', token.access_token)
+          self.globalData.access_token = token.access_token
+          typeof cb == "function" && cb(token.access_token)
+        })
+      },
+      fail (res) {
+        self.failMsg('登录失败 请重试')
+      }
+    })
   },
   getData (url, data, cb) {
     var self = this
@@ -61,11 +68,10 @@ App({
           typeof cb === 'function' && cb(res.data.result)
         } else if (res.data.code === '406') {
           self.globalData.isReady = false
-          wx.redirectTo({
-            url: '../index/index',
-            complete () {
-              self.getAccessToken(self.globalData.code)
-            }
+          self.getAccessToken(() => {
+            wx.redirectTo({
+              url: '../index/index'
+            })
           })
         } else {
           wx.showToast({
@@ -76,14 +82,17 @@ App({
         }
       },
       fail (res) {
-        wx.showModal({
-          title: '错误',
-          content: '网络错误 请重试',
-          success: function(res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-            }
-          }
+        self.failMsg('网络错误 请重试')
+      }
+    })
+  },
+  failMsg (text) {
+    wx.showModal({
+      title: '错误',
+      content: text,
+      success: function(res) {
+        wx.redirectTo({
+          url: '../index/index'
         })
       }
     })

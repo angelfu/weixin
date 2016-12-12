@@ -17,13 +17,13 @@ Page({
       url = 'https://wxtest.yupaopao.cn/godlist/',
       userInfo = {}
       app.getData(url, { }, data => {
-        console.log(data)
         //更新数据
         self.setData({
           godList: data
         })
+        app.infoReady()
       })
-      app.infoReady()
+
   },
   localToDetail (event) {
 
