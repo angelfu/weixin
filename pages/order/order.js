@@ -21,7 +21,9 @@ Page({
     mark: '',
     isSubmit: false,
     isSearch: false,
-    tipText: ''
+    tipText: '',
+    markers: [],
+    covers: []
   },
   //事件处理函数
   bindViewTap () {
@@ -40,7 +42,6 @@ Page({
       now.setMinutes(now.getMinutes() + 10)
       return util.formatNumber(now.getHours()) + ':' + util.formatNumber(now.getMinutes())
     }
-
   },
   showLocalSearch (e) {
     var self = this
@@ -134,10 +135,20 @@ Page({
     }
     app.infoReady(() => {
       app.getData(url, reqData, data => {
-          self.setData({
-            localList: data,
-            isSearch: true
+        var tempCovers = []
+        data.forEach(item => {
+          tempCovers.push({
+            latitude: +item.lat,
+            longitude: +item.lng,
+            iconPath: '../../images/icon-cover.png'
           })
+        })
+        self.setData({
+          localList: data,
+          isSearch: true,
+          covers: tempCovers
+        })
+        console.log(self.data.covers)
       })
     })
   },
@@ -198,7 +209,6 @@ Page({
              },
              complete (res) {
                console.log(333 + res)
-
              }
           })
           console.log(data)
@@ -213,6 +223,14 @@ Page({
   onLoad (option) {
     var self = this,
       url = 'https://wxtest.yupaopao.cn/goddetail/order/'
+    self.setData({
+      markers: [{
+        latitude: app.globalData.local.latitude,
+        longitude: app.globalData.local.longitude,
+        name: '我',
+        desc: '我现在的位置'
+      }]
+    })
     //调用应用实例的方法获取全局数据
     wx.getStorage({
       key: 'mobile',

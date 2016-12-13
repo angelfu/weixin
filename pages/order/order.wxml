@@ -67,7 +67,7 @@
       <input placeholder="简单说说你的要求吧(最多50个字)" maxlength="50" value="{{mark}}" bindchange="bindMarkChange"/>
     </view>
   </view>
-  <view class="local-search-blk" hidden="{{searchLocalHide}}">
+  <view class="local-search-blk" wx:if="{{!searchLocalHide}}">
     <view class="local-search flex flex-jcsb">
       <view class="search-input">
         <icon type="search" size="12"/>
@@ -77,7 +77,10 @@
         <text class="text-link" bindtap="hideLocalSearch">取消</text>
       </view>
     </view>
-    <view class="local-list">
+    <view class="map-blk">
+      <map class="map" scale="14" longitude="{{markers[0].longitude}}" latitude="{{markers[0].latitude}}" markers="{{markers}}" covers="{{covers}}"></map>
+    </view>
+    <scroll-view class="local-list" scroll-y="true">
       <block wx:for="{{localList}}" wx:key="item.id">
         <view class="item" data-item="{{item.id}},{{item.name}},{{item.address}}" bindtap="chooseLocal">
           <view class="info">
@@ -89,7 +92,7 @@
       <view class="nodata" wx:if="{{!localList.length && isSearch}}">
         <text>没有搜索到相符的结果</text>
       </view>
-    </view>
+    </scroll-view>
   </view>
   <view class="footer">
     <view class="view-fixed">
