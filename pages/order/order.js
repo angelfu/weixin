@@ -198,7 +198,7 @@ Page({
           wx.requestPayment({
              timeStamp: data.pay_result.timestamp,
              nonceStr: data.pay_result.nonce_str,
-             package: data.pay_result.app_package,
+             package: 'prepay_id=' + data.pay_result.prepay_id,
              signType: 'MD5',
              paySign: data.pay_result.sign,
              success (res) {
