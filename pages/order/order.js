@@ -202,20 +202,17 @@ Page({
              signType: 'MD5',
              paySign: data.pay_result.sign,
              success (res) {
-               console.log(111 + res)
+               wx.redirectTo({
+                 url: '../order-detail/order-detail?id=' + data.play_order_id
+               })
              },
              fail (res){
-               console.log(222 + res)
+               app.failMsg(res)
              },
              complete (res) {
                console.log(333 + res)
              }
           })
-          console.log(data)
-          // wx.setStorageSync('pay_result', data.pay_result)
-          // wx.navigateTo({
-          //   url: '../pay/pay？play_order_id＝'+ data.play_order_id + '&user_id=' + data.user_id
-          // })
         })
       })
     }
