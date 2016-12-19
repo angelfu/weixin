@@ -21,7 +21,7 @@
 .god-detail .avatar .info .tag-list {
   margin-top: 20rpx;
 }
-.cat-photo image {
+.cat-photo image,.cat-photo video {
   width: 750rpx;
   height: 490rpx;
 }

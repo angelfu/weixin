@@ -14,7 +14,8 @@
       </view>
     </view>
     <view class="cat-photo">
-      <image src="{{godDetail.img_urls[0] + '?imageView2/1/w/375/h/245'}}"></image>
+      <video wx:if="{{godDetail.video}}" src="{{godDetail.video}}"></video>
+      <image wx:if="{{!godDetail.video}}" src="{{godDetail.img_urls[0] + '?imageView2/1/w/375/h/245'}}"></image>
     </view>
     <view class="cat-info">
       <view class="price"><text class="big">{{godDetail.price}}</text>元/小时</view>
