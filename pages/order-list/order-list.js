@@ -13,7 +13,7 @@ Page({
   },
   onLoad (option) {
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/orderlist/',
+      url = app.globalData.baseUrl + 'orderlist/',
       userInfo = {}
 
     app.infoReady(() => {

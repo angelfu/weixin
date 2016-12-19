@@ -126,7 +126,7 @@ Page({
   },
   searchStore (e) {
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/storelist/'
+      url = app.globalData.baseUrl + 'storelist/'
     var reqData = {
       cat_id: self.data.order.cat_list[self.data.catIndex].cat_id,
       lat: app.globalData.local.latitude,
@@ -160,7 +160,7 @@ Page({
   },
   submitOrder () {
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/createorder/',
+      url = app.globalData.baseUrl + 'createorder/',
       userInfo = app.globalData.userInfo,
       orderInfo = {
         cat_id : self.data.order.cat_list[self.data.catIndex].cat_id,
@@ -218,7 +218,7 @@ Page({
   },
   onLoad (option) {
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/goddetail/order/'
+      url = app.globalData.baseUrl + 'goddetail/order/'
     self.setData({
       markers: [{
         latitude: app.globalData.local.latitude,

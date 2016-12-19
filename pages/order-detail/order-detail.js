@@ -14,7 +14,7 @@ Page({
   },
   orderQuit (e) {
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/cancelorder/'
+      url = app.globalData.baseUrl + 'cancelorder/'
     wx.showModal({
       title: '取消订单',
       content: '当前订单正在进行中，确认取消订单',
@@ -36,7 +36,7 @@ Page({
   },
   onLoad (option) {
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/orderdetail/'
+      url = app.globalData.baseUrl + 'orderdetail/'
 
     app.infoReady(() => {
       app.getData(url, { order_id: option.id }, data => {

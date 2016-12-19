@@ -14,13 +14,6 @@ App({
     if (self.globalData.isReady) {
       typeof cb == "function" && cb()
     } else {
-      wx.getLocation({
-        type: 'wgs84',
-        success: function(res) {
-          self.globalData.local = res
-        }
-      })
-
       self.getAccessToken(() => {
         wx.getUserInfo({
           success: function (res) {
@@ -33,6 +26,24 @@ App({
           }
         })
       })
+    }
+  },
+  getLocalReady (cb) {
+    var self = this
+    if(!self.globalData.local) {
+      wx.getLocation({
+        type: 'wgs84',
+        success: function(res) {
+          self.globalData.local = res
+          typeof cb == "function" && cb({ latitude: res.latitude, longitude: res.longitude })
+        },
+        fail: function(res) {
+          self.failMsg('获取用户地址失败')
+          typeof cb == "function" && cb()
+        }
+      })
+    }else {
+      typeof cb == "function" && cb({ latitude: app.globalData.local.latitude, longitude: app.globalData.local.longitude })
     }
   },
   getAccessToken (cb) {
@@ -103,6 +114,7 @@ App({
     isReady: false,
     userInfo: null,
     code: null,
-    local: null
+    local: null,
+    baseUrl: 'https://wxtest.yupaopao.cn/'
   }
 })

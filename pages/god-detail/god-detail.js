@@ -14,7 +14,7 @@ Page({
   },
   onLoad (option) {
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/goddetail/'
+      url = app.globalData.baseUrl + 'goddetail/'
 
     app.infoReady(() => {
       app.getData(url, { god_id: option.id }, data => {

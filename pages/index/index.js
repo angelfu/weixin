@@ -3,7 +3,6 @@
 var app = getApp()
 Page({
   data: {
-    userInfo: {},
     godList: []
   },
   //事件处理函数
@@ -14,18 +13,16 @@ Page({
   },
   onLoad () {
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/godlist/',
-      userInfo = {}
-      app.getData(url, { }, data => {
+      url = app.globalData.baseUrl + 'godlist/'
+
+    app.getLocalReady((local) => {
+      app.getData(url, local, data => {
         //更新数据
         self.setData({
           godList: data
         })
         app.infoReady()
       })
-
-  },
-  localToDetail (event) {
-
+    })
   }
 })
