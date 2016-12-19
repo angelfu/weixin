@@ -14,7 +14,7 @@ Page({
   },
   orderQuit (e) {
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/quitOrder/'
+      url = 'https://wxtest.yupaopao.cn/cancelorder/'
     wx.showModal({
       title: '取消订单',
       content: '当前订单正在进行中，确认取消订单',
@@ -27,7 +27,7 @@ Page({
               duration: 2000
             })
             wx.redirectTo({
-              url: '../index/index'
+              url: '../order-list/order-list'
             })
           })
         }

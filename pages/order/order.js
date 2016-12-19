@@ -148,7 +148,6 @@ Page({
           isSearch: true,
           covers: tempCovers
         })
-        console.log(self.data.covers)
       })
     })
   },
