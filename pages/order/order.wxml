@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="order clearfix">
+  <view class="order clearfix" wx:if="{{searchLocalHide}}">
     <view class="order-god-info blk">
       <view class="avatar">
         <view class="photo"><image src="{{order.god_detail.avatar + '?imageView2/1/w/150/h/150'}}"></image></view>
@@ -64,7 +64,7 @@
       </view>
     </view>
     <view class="order-mark blk">
-      <input placeholder="简单说说你的要求吧(最多50个字)" maxlength="50" value="{{mark}}" bindchange="bindMarkChange"/>
+      <textarea placeholder="简单说说你的要求吧(最多50个字)" maxlength="50" value="{{mark}}" bindchange="bindMarkChange"></textarea>
     </view>
   </view>
   <view class="local-search-blk" wx:if="{{!searchLocalHide}}">
@@ -78,7 +78,7 @@
       </view>
     </view>
     <view class="map-blk">
-      <map class="map" scale="14" longitude="{{markers[0].longitude}}" latitude="{{markers[0].latitude}}" markers="{{markers}}" covers="{{covers}}"></map>
+      <map class="map" scale="14" longitude="{{markers[0].longitude}}" latitude="{{markers[0].latitude}}" markers="{{markers}}" bindmarkertap="markertap"></map>
     </view>
     <scroll-view class="local-list" scroll-y="true">
       <block wx:for="{{localList}}" wx:key="item.id">

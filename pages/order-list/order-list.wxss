@@ -1,5 +1,5 @@
 .order-list .item {color:#858585;}
-.order-list .item.dis {opacity: .3;}
+.order-list .item.dis {opacity: .5;}
 .order-list .item .item-hd {padding: 15rpx 20rpx;}
 .order-list .item .item-bd {border: solid #e5e5e5;border-width: 1rpx 0;padding: 25rpx 20rpx;}
 .order-list .item .item-bd .avatar {float: left;}

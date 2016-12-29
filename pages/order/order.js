@@ -22,8 +22,7 @@ Page({
     isSubmit: false,
     isSearch: false,
     tipText: '',
-    markers: [],
-    covers: []
+    markers: []
   },
   //事件处理函数
   bindViewTap () {
@@ -107,11 +106,22 @@ Page({
       mobile: e.detail.value
     })
   },
-  bindMarkChange(e) {
+  bindMarkChange (e) {
     var self = this
     self.setData({
       mark: e.detail.value
     })
+  },
+  markertap (e) {
+    var self = this,
+      curLocal = {}
+    curLocal = self.data.localList.find(item => item.id === e.markerId)
+    if (curLocal && curLocal.id !== 'my') {
+      self.setData({
+        curLocal: {id: curLocal.id, name: curLocal.name, address: curLocal.address}
+      })
+      self.hideLocalSearch()
+    }
   },
   showTip (text) {
     var self = this
@@ -135,9 +145,17 @@ Page({
     }
     app.infoReady(() => {
       app.getData(url, reqData, data => {
-        var tempCovers = []
+        var tempMarkers = [{
+          id: 'my',
+          title: '我的位置',
+          latitude: app.globalData.local.latitude,
+          longitude: app.globalData.local.longitude,
+          iconPath: ''
+        }]
         data.forEach(item => {
-          tempCovers.push({
+          tempMarkers.push({
+            id: item.id,
+            title: item.name,
             latitude: +item.lat,
             longitude: +item.lng,
             iconPath: '../../images/icon-cover.png'
@@ -146,7 +164,7 @@ Page({
         self.setData({
           localList: data,
           isSearch: true,
-          covers: tempCovers
+          markers: tempMarkers
         })
       })
     })
@@ -219,14 +237,6 @@ Page({
   onLoad (option) {
     var self = this,
       url = app.globalData.baseUrl + 'goddetail/order/'
-    self.setData({
-      markers: [{
-        latitude: app.globalData.local.latitude,
-        longitude: app.globalData.local.longitude,
-        name: '我',
-        desc: '我现在的位置'
-      }]
-    })
     //调用应用实例的方法获取全局数据
     wx.getStorage({
       key: 'mobile',
