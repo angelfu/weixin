@@ -31,14 +31,16 @@ Page({
     })
   },
   formatTime (model) {
-    var now = new Date()
+    var now = new Date(),
+      plusTime = 30 // 下单起始所加时间
+
     if (model === 0) {
       return now.getFullYear() + '-' + util.formatNumber(now.getMonth() + 1) + '-' + util.formatNumber(now.getDate())
     } else if (model === '1') {
       now.setDate(now.getDate() + 1)
       return now.getFullYear() + '-' + util.formatNumber(now.getMonth() + 1) + '-' + util.formatNumber(now.getDate())
     } else {
-      now.setMinutes(now.getMinutes() + 10)
+      now.setMinutes(now.getMinutes() + plusTime)
       return util.formatNumber(now.getHours()) + ':' + util.formatNumber(now.getMinutes())
     }
   },

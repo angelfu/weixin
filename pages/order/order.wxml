@@ -49,7 +49,7 @@
       <view class="item">
         <view class="flex flex-jcsb">
           <view class="label"><text>手机号</text></view>
-          <view class="info"><input bindchange="bindMobileChange" placeholder="请输入手机号" maxlength="11" value="{{mobile}}"/></view>
+          <view class="info"><input bindchange="bindMobileChange" placeholder="请输入您的手机号" maxlength="11" value="{{mobile}}"/></view>
         </view>
       </view>
     </view>
