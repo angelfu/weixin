@@ -8,7 +8,6 @@ App({
     wx.setStorageSync('logs', logs)
   },
   infoReady (cb) {
-    console.log(1)
     var self = this,
       url = self.globalData.baseUrl + 'login/'
 
