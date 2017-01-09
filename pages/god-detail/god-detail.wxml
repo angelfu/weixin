@@ -1,73 +1,78 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="god-detail">
-    <view class="avatar clearfix">
-      <view class="photo">
-        <image src="{{godDetail.avatar + '?imageView2/1/w/50/h/50'}}" mode="scaleToFill" binderror="" bindload=""></image>
-      </view>
-      <view class="info">
-        <text class="nickname">{{godDetail.nickname}}</text>
-        <view class="tag-list">
-          <view class="tag tag-gender {{godDetail.gender ? 'tag-sex1' : ''}}"><image src="{{godDetail.gender ? '../../images/icon-sex-1.png' : '../../images/icon-sex-0.png'}}"></image><text>{{godDetail.age}}</text></view>
-          <view class="tag tag-auth" wx:if="{{godDetail.is_auth}}"><image src="../../images/icon-auth.png"></image>认证</view>
+  <view class="load-blk" wx:if="{{isLoad}}">
+    <view class="god-detail">
+      <view class="avatar clearfix">
+        <view class="photo">
+          <image src="{{godDetail.avatar + '?imageView2/1/w/50/h/50'}}" mode="scaleToFill" binderror="" bindload=""></image>
         </view>
-      </view>
-    </view>
-    <view class="cat-photo">
-      <video wx:if="{{godDetail.video}}" src="{{godDetail.video}}"></video>
-      <image wx:if="{{!godDetail.video}}" src="{{godDetail.img_urls[0] + '?imageView2/1/w/375/h/245'}}"></image>
-    </view>
-    <view class="cat-info">
-      <view class="price"><text class="big">{{godDetail.price}}</text>元/小时</view>
-      <view class="other-info flex flex-jcsa">
-        <view class="local">
-          <image src="../../images/icon-local.png" class="icon"></image>
-          <text>{{godDetail.city_name}} | {{godDetail.leavetime}}</text>
-        </view>
-        <view class="ordertime">
-          <image src="../../images/icon-ordertime.png" class="icon"></image>
-          <text class="order-icon">接单{{godDetail.total_unit_count}}小时</text>
-        </view>
-      </view>
-    </view>
-    <view class="cat-sign">
-      <text>{{godDetail.sign}}</text>
-    </view>
-  </view>
-  <view class="comment-blk">
-    <view class="comment-info flex flex-jcsb">
-      <view class="text-label"><text>全部评论 ({{commentList.length}}次)</text></view>
-      <view class="rate-star"><text>{{godDetail.comment_rate}}</text><image class="icon" src="../../images/icon-star.png"></image></view>
-    </view>
-    <view class="comment-list">
-      <block wx:for="{{commentList}}" wx:key="{{item.id}}">
-        <view class="item clearfix">
-          <view class="avatar">
-            <image src="{{item.avatar + '?imageView2/1/w/32/h/32'}}"></image>
+        <view class="info">
+          <text class="nickname">{{godDetail.nickname}}</text>
+          <view class="tag-list">
+            <view class="tag tag-gender {{godDetail.gender ? 'tag-sex1' : ''}}"><image src="{{godDetail.gender ? '../../images/icon-sex-1.png' : '../../images/icon-sex-0.png'}}"></image><text>{{godDetail.age}}</text></view>
+            <view class="tag tag-auth" wx:if="{{godDetail.is_auth}}"><image src="../../images/icon-auth.png"></image>认证</view>
           </view>
-          <view class="info">
-            <view class="info-hd flex flex-jcsb">
-              <view class="text-label"><text>{{item.nickname}}</text></view>
-              <view class="star-blk">
-                <image class="icon" wx:for="{{5}}" wx:key="{{starItem}}" wx:for-item="starItem" src="{{starItem < item.score ? '../../images/icon-star.png' : '../../images/icon-star-dis.png'}}"></image>
+        </view>
+      </view>
+      <view class="cat-photo">
+        <video wx:if="{{godDetail.video}}" src="{{godDetail.video}}"></video>
+        <image wx:if="{{!godDetail.video}}" src="{{godDetail.img_urls[0] + '?imageView2/1/w/375/h/245'}}"></image>
+      </view>
+      <view class="cat-info">
+        <view class="price"><text class="big">{{godDetail.price}}</text>元/小时</view>
+        <view class="other-info flex flex-jcsa">
+          <view class="local">
+            <image src="../../images/icon-local.png" class="icon"></image>
+            <text>{{godDetail.city_name}} | {{godDetail.leavetime}}</text>
+          </view>
+          <view class="ordertime">
+            <image src="../../images/icon-ordertime.png" class="icon"></image>
+            <text class="order-icon">接单{{godDetail.total_unit_count}}小时</text>
+          </view>
+        </view>
+      </view>
+      <view class="cat-sign">
+        <text>{{godDetail.sign}}</text>
+      </view>
+    </view>
+    <view class="comment-blk">
+      <view class="comment-info flex flex-jcsb">
+        <view class="text-label"><text>全部评论 ({{commentList.length}}次)</text></view>
+        <view class="rate-star"><text>{{godDetail.comment_rate}}</text><image class="icon" src="../../images/icon-star.png"></image></view>
+      </view>
+      <view class="comment-list">
+        <block wx:for="{{commentList}}" wx:key="{{item.id}}">
+          <view class="item clearfix">
+            <view class="avatar">
+              <image src="{{item.avatar + '?imageView2/1/w/32/h/32'}}"></image>
+            </view>
+            <view class="info">
+              <view class="info-hd flex flex-jcsb">
+                <view class="text-label"><text>{{item.nickname}}</text></view>
+                <view class="star-blk">
+                  <image class="icon" wx:for="{{5}}" wx:key="{{starItem}}" wx:for-item="starItem" src="{{starItem < item.score ? '../../images/icon-star.png' : '../../images/icon-star-dis.png'}}"></image>
+                </view>
+              </view>
+              <view class="info-bd">
+                <text>{{item.content}}</text>
+              </view>
+              <view class="info-ft">
+                <text class="text-ligth">{{item.create_time}}</text>
               </view>
             </view>
-            <view class="info-bd">
-              <text>{{item.content}}</text>
-            </view>
-            <view class="info-ft">
-              <text class="text-ligth">{{item.create_time}}</text>
-            </view>
           </view>
-        </view>
-      </block>
+        </block>
+      </view>
+    </view>
+    <view class="footer">
+      <view class="view-fixed">
+        <navigator url="{{'../order/order?id=' + godDetail.id}}">
+          <button class="btn" hover-class="none">下单</button>
+        </navigator>
+      </view>
     </view>
   </view>
-  <view class="footer">
-    <view class="view-fixed">
-      <navigator url="{{'../order/order?id=' + godDetail.id}}">
-        <button class="btn">下单</button>
-      </navigator>
-    </view>
+  <view class="load" wx:if="{{!isLoad}}">
+    <text class="loader"></text>
   </view>
 </view>

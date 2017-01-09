@@ -3,6 +3,7 @@
 var app = getApp()
 Page({
   data: {
+    isLoad: false,
     godList: []
   },
   //事件处理函数
@@ -19,6 +20,7 @@ Page({
       app.getData(url, local, data => {
         //更新数据
         self.setData({
+          isLoad: true,
           godList: data
         })
         app.infoReady()

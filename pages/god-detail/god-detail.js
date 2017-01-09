@@ -3,6 +3,7 @@
 var app = getApp()
 Page({
   data: {
+    isLoad: false,
     godDetail: {},
     commentList: {}
   },
@@ -19,6 +20,7 @@ Page({
     app.infoReady(() => {
       app.getData(url, { god_id: option.id }, data => {
         self.setData({
+          isLoad: true,
           godDetail: data.god_detail,
           commentList: data.rate_list
         })

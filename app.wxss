@@ -33,11 +33,53 @@ image,text,icon {
   position: fixed;
   width: 100%;
   bottom:0;
+  z-index: 10;
 }
 .btn {
   background: #1D9AFF;
   color: #fff;
   border-radius: 0;
+}
+
+.loader {
+    font-size: 20rpx;
+    position: fixed;
+    left:50%;
+    top:50%;
+    margin-left: -24rpx;
+    text-indent: -9999em;
+    border-top: 6rpx solid rgba(0, 0, 0, 0);
+    border-right: 6rpx solid #1D9AFF;
+    border-bottom: 6rpx solid #1D9AFF;
+    border-left: 6rpx solid #1D9AFF;
+    -webkit-animation: load .72s infinite linear;
+    animation: load .72s infinite linear;
+}
+.loader,.loader:after {
+  border-radius: 50%;
+  width: 36rpx;
+  height: 36rpx;
+}
+
+@-webkit-keyframes load {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 .clearfix:before, .clearfix:after {
     content: "";

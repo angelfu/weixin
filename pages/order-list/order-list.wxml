@@ -1,30 +1,35 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="order-list clearfix">
-    <block wx:for="{{orderList}}" wx:key="item.id">
-      <navigator url="{{'../order-detail/order-detail?id=' + item.id}}">
-        <view class="item blk {{item.is_gray && 'dis'}}">
-          <view class="item-hd flex flex-jcsb">
-            <view class="order-status"><text class="text-link">{{item.order_status_desc}}</text></view>
-            <view class="order-time"><text>下单时间：{{item.create_time}}</text></view>
-          </view>
-          <view class="item-bd clearfix">
-            <view class="avatar">
-              <view class="photo">
-                <image src="{{item.avatar + '?imageView2/1/w/100/h/100'}}"></image>
+  <view class="load-blk" wx:if="{{isLoad}}">
+    <view class="order-list clearfix">
+      <block wx:for="{{orderList}}" wx:key="item.id">
+        <navigator url="{{'../order-detail/order-detail?id=' + item.id}}">
+          <view class="item blk {{item.is_gray && 'dis'}}">
+            <view class="item-hd flex flex-jcsb">
+              <view class="order-status"><text class="text-link">{{item.order_status_desc}}</text></view>
+              <view class="order-time"><text>下单时间：{{item.create_time}}</text></view>
+            </view>
+            <view class="item-bd clearfix">
+              <view class="avatar">
+                <view class="photo">
+                  <image src="{{item.avatar + '?imageView2/1/w/100/h/100'}}"></image>
+                </view>
+              </view>
+              <view class="info">
+                <view class="time"><text>预约时间：{{item.begin_time}}</text></view>
+                <view class="cat"><text>{{item.play_category_name}}</text></view>
+                <view class="local"><text>{{item.play_poi_name}}</text></view>
               </view>
             </view>
-            <view class="info">
-              <view class="time"><text>预约时间：{{item.begin_time}}</text></view>
-              <view class="cat"><text>{{item.play_category_name}}</text></view>
-              <view class="local"><text>{{item.play_poi_name}}</text></view>
+            <view class="item-ft">
+              <text class="cost">费用：¥{{item.pay_fee}}</text>
             </view>
           </view>
-          <view class="item-ft">
-            <text class="cost">费用：¥{{item.pay_fee}}</text>
-          </view>
-        </view>
-      </navigator>
-    </block>
+        </navigator>
+      </block>
+    </view>
+  </view>
+  <view class="load" wx:if="{{!isLoad}}">
+    <text class="loader"></text>
   </view>
 </view>

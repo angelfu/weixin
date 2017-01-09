@@ -1,55 +1,60 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="order-detail">
-    <view class="order-status">
-      <icon wx:if="{{orderDetail.order_status_desc === '等待接单'}}" type="waiting" size="22"></icon>
-      <text>{{orderDetail.order_status_desc}}</text>
-    </view>
-    <view class="order-god-info blk">
-      <view class="avatar">
-        <view class="photo"><image src="{{orderDetail.avatar + '?imageView2/1/w/150/h/150'}}"></image></view>
-        <view class="name"><text>{{orderDetail.nickname}}</text></view>
+  <view class="load-blk" wx:if="{{isLoad}}">
+    <view class="order-detail">
+      <view class="order-status">
+        <icon wx:if="{{orderDetail.order_status_desc === '等待接单'}}" type="waiting" size="22"></icon>
+        <text>{{orderDetail.order_status_desc}}</text>
       </view>
-    </view>
-    <view class="order-item-info blk">
-      <view class="item">
-        <view class="flex flex-jcsb">
-          <view class="label"><text>品类</text></view>
-          <view class="info"><text class="text-link">{{orderDetail.play_category_name}}</text></view>
+      <view class="order-god-info blk">
+        <view class="avatar">
+          <view class="photo"><image src="{{orderDetail.avatar + '?imageView2/1/w/150/h/150'}}"></image></view>
+          <view class="name"><text>{{orderDetail.nickname}}</text></view>
         </view>
       </view>
-      <view class="item">
-        <view class="flex flex-jcsb">
-          <view class="label"><text>时间</text></view>
-          <view class="info"><text class="text-link">今天{{orderDetail.begin_time}}  {{orderDetail.hours}}次</text></view>
+      <view class="order-item-info blk">
+        <view class="item">
+          <view class="flex flex-jcsb">
+            <view class="label"><text>品类</text></view>
+            <view class="info"><text class="text-link">{{orderDetail.play_category_name}}</text></view>
+          </view>
+        </view>
+        <view class="item">
+          <view class="flex flex-jcsb">
+            <view class="label"><text>时间</text></view>
+            <view class="info"><text class="text-link">今天{{orderDetail.begin_time}}  {{orderDetail.hours}}次</text></view>
+          </view>
+        </view>
+        <view class="item">
+          <view class="flex flex-jcsb" bindtap="showLocalSearch">
+            <view class="label"><text>地点</text></view>
+            <view class="info"><text class="text-link">{{orderDetail.play_poi_name}}</text></view>
+          </view>
+        </view>
+        <view class="item">
+          <view class="flex flex-jcsb" bindtap="showLocalSearch">
+            <view class="label"><text>手机号</text></view>
+            <view class="info"><text class="text-link">{{orderDetail.phone}}</text></view>
+          </view>
         </view>
       </view>
-      <view class="item">
-        <view class="flex flex-jcsb" bindtap="showLocalSearch">
-          <view class="label"><text>地点</text></view>
-          <view class="info"><text class="text-link">{{orderDetail.play_poi_name}}</text></view>
+      <view class="order-item-info blk">
+        <view class="item flex flex-jcsb">
+          <view class="label"><text>合计</text></view>
+          <view class="info"><text>{{orderDetail.pay_fee}}元</text></view>
         </view>
       </view>
-      <view class="item">
-        <view class="flex flex-jcsb" bindtap="showLocalSearch">
-          <view class="label"><text>手机号</text></view>
-          <view class="info"><text class="text-link">{{orderDetail.phone}}</text></view>
-        </view>
+      <view class="order-mark blk">
+        <text>{{orderDetail.remark}}</text>
       </view>
     </view>
-    <view class="order-item-info blk">
-      <view class="item flex flex-jcsb">
-        <view class="label"><text>合计</text></view>
-        <view class="info"><text>{{orderDetail.pay_fee}}元</text></view>
+    <view class="footer" wx:if="{{isQuit}}">
+      <view class="view-fixed">
+        <button class="btn" bindtap="orderQuit" hover-class="none">取消订单</button>
       </view>
-    </view>
-    <view class="order-mark blk">
-      <text>{{orderDetail.remark}}</text>
     </view>
   </view>
-  <view class="footer" wx:if="{{isQuit}}">
-    <view class="view-fixed">
-      <button class="btn" bindtap="orderQuit">取消订单</button>
-    </view>
+  <view class="load" wx:if="{{!isLoad}}">
+    <text class="loader"></text>
   </view>
 </view>

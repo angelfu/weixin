@@ -3,8 +3,9 @@
 var app = getApp()
 Page({
   data: {
-    orderDetail: {},
-    isQuit: false
+    isLoad: false,
+    isQuit: false,
+    orderDetail: {}
   },
   //事件处理函数
   bindViewTap () {
@@ -41,6 +42,7 @@ Page({
     app.infoReady(() => {
       app.getData(url, { order_id: option.id }, data => {
         self.setData({
+          isLoad: true,
           orderDetail: data
         })
         if (data.can_cancel) {

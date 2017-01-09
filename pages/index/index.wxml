@@ -1,48 +1,53 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="god-list">
-    <block wx:for="{{godList}}" wx:key="{{item.god_id}}">
-      <view class="god-list-item">
-        <navigator url="{{'../god-detail/god-detail?id=' + item.god_id}}">
-          <view class="avatar">
-            <image src="{{item.avatar + '?imageView2/1/w/375/h/230'}}" mode="scaleToFill" binderror="" bindload=""></image>
-          </view>
-          <view class="info">
-            <view class="info-flex info-hd">
-              <view><text>{{item.nickname}}</text></view>
-              <view><text>{{item.price}}元／小时</text></view>
+  <view class="load-blk" wx:if="{{isLoad}}">
+    <view class="god-list">
+      <block wx:for="{{godList}}" wx:key="{{item.god_id}}">
+        <view class="god-list-item">
+          <navigator url="{{'../god-detail/god-detail?id=' + item.god_id}}">
+            <view class="avatar">
+              <image src="{{item.avatar + '?imageView2/1/w/375/h/230'}}" mode="scaleToFill" binderror="" bindload=""></image>
             </view>
-            <view class="info-flex info-bd">
-              <view class="tag-list">
-                <view class="tag tag-gender {{item.gender ? 'tag-sex1' : ''}}"><image src="{{item.gender ? '../../images/icon-sex-1.png' : '../../images/icon-sex-0.png'}}"></image><text>{{item.age}}</text></view>
+            <view class="info">
+              <view class="info-flex info-hd">
+                <view><text>{{item.nickname}}</text></view>
+                <view><text>{{item.price}}元／小时</text></view>
               </view>
-              <view>
-                <text>接单{{item.total_unit_count}}小时</text>
+              <view class="info-flex info-bd">
+                <view class="tag-list">
+                  <view class="tag tag-gender {{item.gender ? 'tag-sex1' : ''}}"><image src="{{item.gender ? '../../images/icon-sex-1.png' : '../../images/icon-sex-0.png'}}"></image><text>{{item.age}}</text></view>
+                </view>
+                <view>
+                  <text>接单{{item.total_unit_count}}小时</text>
+                </view>
+              </view>
+              <view class="info-flex info-ft">
+                <view class="star-blk">
+                  <image class="icon" wx:for="{{5}}" wx:key="{{starItem}}" wx:for-item="starItem" src="{{starItem < item.comment_rate ? '../../images/icon-star.png' : '../../images/icon-star-dis.png'}}"></image>
+                </view>
+                <view>
+                  <text>{{item.distance}}km | {{item.leavetime}}</text>
+                </view>
               </view>
             </view>
-            <view class="info-flex info-ft">
-              <view class="star-blk">
-                <image class="icon" wx:for="{{5}}" wx:key="{{starItem}}" wx:for-item="starItem" src="{{starItem < item.comment_rate ? '../../images/icon-star.png' : '../../images/icon-star-dis.png'}}"></image>
-              </view>
-              <view>
-                <text>{{item.distance}}km | {{item.leavetime}}</text>
-              </view>
-            </view>
-          </view>
-        </navigator>
-      </view>
-    </block>
-  </view>
-  <view class="help-tip">
-    <navigator url="../help/help">
-      <image class="icon lg" src="../../images/icon-help.png"></image>
-    </navigator>
-  </view>
-  <view class="footer nopt">
-    <view class="view-fixed">
-      <navigator url="../order-list/order-list">
-        <button class="btn"><image class="icon" src="../../images/icon-order.png"></image><text> 订单列表</text></button>
+          </navigator>
+        </view>
+      </block>
+    </view>
+    <view class="help-tip">
+      <navigator url="../help/help">
+        <image class="icon lg" src="../../images/icon-help.png"></image>
       </navigator>
     </view>
+    <view class="footer nopt">
+      <view class="view-fixed">
+        <navigator url="../order-list/order-list">
+          <button class="btn" hover-class="none"><image class="icon" src="../../images/icon-order.png"></image><text> 订单列表</text></button>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="load" wx:if="{{!isLoad}}">
+    <text class="loader"></text>
   </view>
 </view>

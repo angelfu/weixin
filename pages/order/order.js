@@ -21,6 +21,7 @@ Page({
     mark: '',
     isSubmit: false,
     isSearch: false,
+    isLoad: false,
     tipText: '',
     markers: []
   },
@@ -255,6 +256,7 @@ Page({
           temp.push(item.cat_name)
         })
         self.setData({
+          isLoad: true,
           order: data,
           time: self.formatTime(),
           startTime: self.formatTime(),

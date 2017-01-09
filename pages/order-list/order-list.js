@@ -3,6 +3,7 @@
 var app = getApp()
 Page({
   data: {
+    isLoad: false,
     orderList: []
   },
   //事件处理函数
@@ -19,6 +20,7 @@ Page({
     app.infoReady(() => {
       app.getData(url, {}, data => {
         self.setData({
+          isLoad: true,
           orderList: data
         })
       })
