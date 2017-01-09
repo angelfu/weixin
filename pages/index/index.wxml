@@ -4,7 +4,7 @@
     <view class="god-list">
       <block wx:for="{{godList}}" wx:key="{{item.god_id}}">
         <view class="god-list-item">
-          <navigator url="{{'../god-detail/god-detail?id=' + item.god_id}}">
+          <navigator url="{{'../god-detail/god-detail?god_id=' + item.god_id + '&cat_id=' + item.cat_id}}">
             <view class="avatar">
               <image src="{{item.avatar + '?imageView2/1/w/375/h/230'}}" mode="scaleToFill" binderror="" bindload=""></image>
             </view>

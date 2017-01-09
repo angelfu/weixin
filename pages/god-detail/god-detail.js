@@ -16,9 +16,8 @@ Page({
   onLoad (option) {
     var self = this,
       url = app.globalData.baseUrl + 'goddetail/'
-
     app.infoReady(() => {
-      app.getData(url, { god_id: option.id }, data => {
+      app.getData(url, { god_id: option.god_id, cat_id: option.cat_id }, data => {
         self.setData({
           isLoad: true,
           godDetail: data.god_detail,
