@@ -116,6 +116,6 @@ App({
     userInfo: null,
     code: null,
     local: null,
-    baseUrl: 'https://wxlp.yupaopao.cn/'
+    baseUrl: 'https://wxtest.yupaopao.cn/'
   }
 })
