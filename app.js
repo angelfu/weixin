@@ -8,8 +8,9 @@ App({
     wx.setStorageSync('logs', logs)
   },
   infoReady (cb) {
+    console.log(1)
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/login/'
+      url = self.globalData.baseUrl + 'login/'
 
     if (self.globalData.isReady) {
       typeof cb == "function" && cb()
@@ -43,12 +44,12 @@ App({
         }
       })
     }else {
-      typeof cb == "function" && cb({ latitude: app.globalData.local.latitude, longitude: app.globalData.local.longitude })
+      typeof cb == "function" && cb({ latitude: self.globalData.local.latitude, longitude: self.globalData.local.longitude })
     }
   },
   getAccessToken (cb) {
     var self = this,
-      url = 'https://wxtest.yupaopao.cn/login/'
+      url = self.globalData.baseUrl + 'login/'
 
     wx.login({
       success: function (data) {
@@ -115,6 +116,6 @@ App({
     userInfo: null,
     code: null,
     local: null,
-    baseUrl: 'https://wxtest.yupaopao.cn/'
+    baseUrl: 'https://wxlp.yupaopao.cn/'
   }
 })
