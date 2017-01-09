@@ -1,23 +1,36 @@
 .help-container {
-    padding: 43rpx 35rpx;
+    padding: 40rpx 35rpx;
     font-size: 28rpx;
     line-height: 60rpx;
+    color: #9B9B9B;
+    line-height: 1.8;
 }
 
 .f-blue {
     color: #1D9AFF;
 }
-
+.help-blk {padding-top: 20rpx;}
 .help-container .blk-hd {
     margin: 15rpx 0;
+    font-size: 30rpx;
 }
-
+.help-container .blk-hd::before {
+  content:'';
+  display: inline-block;
+  height: 30rpx;
+  width: 4rpx;
+  background: #1D9AFF;
+  border-radius: 2rpx;
+  vertical-align: middle;
+  margin-right: 15rpx;
+}
 .help-container .blk-footer {
     font-size: 24rpx;
 }
 
 .help-container-footer {
-    margin-top: 60rpx;
+    margin-top: 100rpx;
     text-align: center;
     font-size: 22rpx;
 }
+.item {margin-bottom: 10rpx;}
