@@ -140,12 +140,13 @@ Page({
   searchStore (e) {
     var self = this,
       url = app.globalData.baseUrl + 'storelist/'
+
     var reqData = {
       cat_id: self.data.order.cat_list[self.data.catIndex].cat_id,
-      lat: app.globalData.local.latitude,
-      lng: app.globalData.local.longitude,
-      search_word: e.detail.value
+      location: app.globalData.local.longitude + ',' + app.globalData.local.latitude,
+      keywords: e.detail.value || ''
     }
+
     app.infoReady(() => {
       app.getData(url, reqData, data => {
         var tempMarkers = [{
@@ -171,6 +172,7 @@ Page({
         })
       })
     })
+
   },
   updateMoney () {
     var self = this
