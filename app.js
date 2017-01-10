@@ -102,9 +102,7 @@ App({
       title: '错误',
       content: text,
       success: function(res) {
-        wx.redirectTo({
-          url: '../index/index'
-        })
+        wx.navigateBack()
       }
     })
   },
