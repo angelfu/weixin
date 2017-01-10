@@ -7,7 +7,7 @@ Page({
     order: {},
     catArr: [],
     catIndex: 0,
-    numArr: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+    numArr: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
     numIndex: 0,
     time: '00:00',
     dateArr: ['今天', '明天'],
@@ -32,6 +32,7 @@ Page({
     if (e.type === 'end') {
       self.mapCtx.getCenterLocation({
         success: function(res){
+          console.log(res)
           self.setData({
             centerMarker: {
               latitude: res.latitude,
@@ -68,12 +69,16 @@ Page({
     self.setData({
       searchLocalHide: false
     })
-    self.searchStore(e);
+    self.searchStore();
   },
   hideLocalSearch (e) {
     var self = this
     self.setData({
-      searchLocalHide: true
+      searchLocalHide: true,
+      centerMarker: {
+        latitude: app.globalData.local.latitude,
+        longitude: app.globalData.local.longitude,
+      }
     })
   },
   chooseLocal (e) {
@@ -193,7 +198,6 @@ Page({
         })
       })
     })
-
   },
   updateMoney () {
     var self = this
