@@ -79,7 +79,7 @@
         </view>
       </view>
       <view class="map-blk">
-        <map class="map" scale="14" longitude="{{markers[0].longitude}}" latitude="{{markers[0].latitude}}" markers="{{markers}}" bindmarkertap="markertap"></map>
+        <map id="store-map"class="map" scale="14" longitude="{{centerMarker.longitude}}" latitude="{{centerMarker.latitude}}" markers="{{markers}}" bindmarkertap="markertap" bindregionchange="bindMapChange"></map>
       </view>
       <scroll-view class="local-list" scroll-y="true">
         <block wx:for="{{localList}}" wx:key="item.id">

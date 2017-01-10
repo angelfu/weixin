@@ -3,7 +3,6 @@
     "pages/index/index",
     "pages/god-detail/god-detail",
     "pages/order/order",
-    "pages/pay/pay",
     "pages/order-list/order-list",
     "pages/order-detail/order-detail",
     "pages/help/help",

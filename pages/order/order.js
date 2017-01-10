@@ -23,7 +23,25 @@ Page({
     isSearch: false,
     isLoad: false,
     tipText: '',
+    centerMarker: {},
+    keywords: '',
     markers: []
+  },
+  bindMapChange (e) {
+    var self = this
+    if (e.type === 'end') {
+      self.mapCtx.getCenterLocation({
+        success: function(res){
+          self.setData({
+            centerMarker: {
+              latitude: res.latitude,
+              longitude: res.longitude,
+            }
+          })
+          self.searchStore()
+        }
+      })
+    }
   },
   //事件处理函数
   bindViewTap () {
@@ -141,10 +159,13 @@ Page({
     var self = this,
       url = app.globalData.baseUrl + 'storelist/'
 
+    self.setData({
+      keywords: e ? e.detail.value : self.data.keywords
+    })
     var reqData = {
       cat_id: self.data.order.cat_list[self.data.catIndex].cat_id,
-      location: app.globalData.local.longitude + ',' + app.globalData.local.latitude,
-      keywords: e.detail.value || ''
+      location: self.data.centerMarker.longitude + ',' + self.data.centerMarker.latitude,
+      keywords: self.data.keywords
     }
 
     app.infoReady(() => {
@@ -152,8 +173,8 @@ Page({
         var tempMarkers = [{
           id: 'my',
           title: '我的位置',
-          latitude: app.globalData.local.latitude,
-          longitude: app.globalData.local.longitude,
+          latitude: self.data.centerMarker.latitude,
+          longitude: self.data.centerMarker.longitude,
           iconPath: ''
         }]
         data.forEach(item => {
@@ -232,7 +253,6 @@ Page({
                app.failMsg(res)
              },
              complete (res) {
-               console.log(333 + res)
              }
           })
         })
@@ -242,6 +262,13 @@ Page({
   onLoad (option) {
     var self = this,
       url = app.globalData.baseUrl + 'goddetail/order/'
+    self.mapCtx = wx.createMapContext('store-map')
+    self.setData({
+      centerMarker: {
+        latitude: app.globalData.local.latitude,
+        longitude: app.globalData.local.longitude,
+      }
+    })
     //调用应用实例的方法获取全局数据
     wx.getStorage({
       key: 'mobile',
