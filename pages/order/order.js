@@ -29,19 +29,27 @@ Page({
   },
   bindMapChange (e) {
     var self = this
+
+    self.timer = self.timer || false
+
     if (e.type === 'end') {
-      self.mapCtx.getCenterLocation({
-        success: function(res){
-          console.log(res)
-          self.setData({
-            centerMarker: {
-              latitude: res.latitude,
-              longitude: res.longitude,
-            }
-          })
-          self.searchStore()
-        }
-      })
+      if(!self.timer) {
+        self.timer = true
+        self.mapCtx.getCenterLocation({
+          success: function(res){
+            self.setData({
+              centerMarker: {
+                latitude: res.latitude,
+                longitude: res.longitude,
+              }
+            })
+            self.searchStore()
+            setTimeout(() => {
+              self.timer = false
+            }, 800)
+          }
+        })
+      }
     }
   },
   //事件处理函数
@@ -188,6 +196,8 @@ Page({
             title: item.name,
             latitude: +item.lat,
             longitude: +item.lng,
+            width: '24',
+            height: '32',
             iconPath: '../../images/icon-cover.png'
           })
         })
