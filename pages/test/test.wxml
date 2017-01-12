@@ -1,5 +1,0 @@
-<!--index.wxml-->
-<view class="container">
-  <block wx:for="{{test.cat_list[0]}}" wx:key="{{index}}"><view>{{item}}</view></block>
-  <block wx:for="{{test.god_detail}}" wx:key="{{index}}"><view>{{item}}</view></block>
-</view>

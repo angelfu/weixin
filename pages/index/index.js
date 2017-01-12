@@ -23,11 +23,7 @@ Page({
           isLoad: true,
           godList: data
         })
-        app.infoReady(function(){
-          wx.navigateTo({
-            url: '../test/test'
-          })
-        })
+        app.infoReady()
       })
     })
   }

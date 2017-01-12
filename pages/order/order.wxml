@@ -68,7 +68,7 @@
         <input maxlength="50" placeholder="简单说说你的要求吧(最多50个字)" value="{{mark}}" bindchange="bindMarkChange"></input>
       </view>
     </view>
-    <view class="local-search-blk" hidden="{{searchLocalHide}}">
+    <view class="local-search-blk {{searchLocalHide ? 'out' : ''}}">
       <view class="local-search flex flex-jcsb">
         <view class="search-input">
           <icon type="search" size="12"/>
