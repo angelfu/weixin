@@ -6,7 +6,6 @@
     "pages/order-list/order-list",
     "pages/order-detail/order-detail",
     "pages/help/help",
-    "pages/test/test",
     "pages/logs/logs"
   ],
   "window":{
