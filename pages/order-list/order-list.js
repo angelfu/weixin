@@ -12,6 +12,19 @@ Page({
       url: '../logs/logs'
     })
   },
+  delOrder (e) {
+    var self = this,
+      temp = self.data.orderList
+
+    temp.forEach((item, i) => {
+      if(item.id === e.target.dataset.id) {
+        temp.splice(i, 1)
+      }
+    })
+    self.setData({
+      orderList: temp
+    })
+  },
   onLoad (option) {
     var self = this,
       url = app.globalData.baseUrl + 'orderlist/',
