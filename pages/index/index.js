@@ -15,15 +15,15 @@ Page({
   onLoad () {
     var self = this,
       url = app.globalData.baseUrl + 'godlist/'
-
-    app.getLocalReady((local) => {
-      app.getData(url, local, data => {
-        //更新数据
-        self.setData({
-          isLoad: true,
-          godList: data
+    app.infoReady(() => {
+      app.getLocalReady((local) => {
+        app.getData(url, local, data => {
+          //更新数据
+          self.setData({
+            isLoad: true,
+            godList: data
+          })
         })
-        app.infoReady()
       })
     })
   }

@@ -66,7 +66,9 @@ App({
   },
   getData (url, data, cb) {
     var self = this
-    data.code ? '' : data.access_token = self.globalData.access_token
+    if(!data.code) {
+      data.access_token = self.globalData.access_token
+    }
     wx.request({
       url: url,
       data: data,

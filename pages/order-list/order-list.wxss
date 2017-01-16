@@ -6,3 +6,4 @@
 .order-list .item .item-bd .avatar .photo image {width: 100rpx;height: 100rpx;border-radius:6rpx;}
 .order-list .item .item-bd .info {margin-left: 125rpx;line-height: 1.5;}
 .order-list .item .item-ft {padding: 15rpx 20rpx;text-align: right;}
+.order-tip {text-align: center;font-size: 30rpx;padding: 50rpx 0;}

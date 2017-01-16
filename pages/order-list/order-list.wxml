@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class="load-blk" wx:if="{{isLoad}}">
-    <view class="order-list clearfix">
+    <view class="order-list clearfix" wx:if="{{orderList.length}}">
       <block wx:for="{{orderList}}" wx:key="item.id">
         <navigator url="{{'../order-detail/order-detail?id=' + item.id}}">
           <view class="item blk {{item.is_gray && 'dis'}}">
@@ -27,6 +27,9 @@
           </view>
         </navigator>
       </block>
+    </view>
+    <view class="order-tip" wx:if="{{!orderList.length}}">
+      <text>目前没有订单记录 赶紧去下单把</text>
     </view>
   </view>
   <view class="load" wx:if="{{!isLoad}}">
